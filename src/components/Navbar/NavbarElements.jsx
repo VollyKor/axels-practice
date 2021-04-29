@@ -1,20 +1,32 @@
 import styled from "styled-components";
-import { Link as link } from "react-router-dom";
-import cart from "../Cart";
+import { Nav } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
-//  Icons...
+function C_Navbar(props) {
+  return <Nav {...props}>{props.children}</Nav>;
+}
 
-export const Nav = styled.nav`
-  padding: 10px;
+function C_NavBarLink({ children, to }) {
+  return (
+    <LinkContainer to={to} exact>
+      <Nav.Link className="">{children}</Nav.Link>
+    </LinkContainer>
+  );
+}
 
+export const Navbar = styled(C_Navbar)`
   background: rgb(255, 255, 255);
   border-bottom: 1px solid #c26ea9;
 `;
 
-export const Link = styled(link)`
-  text-decoration: none;
+export const NavLink = styled(C_NavBarLink)`
   color: #c26ea9;
 `;
 
-export const Cart = styled(cart)``;
-export const Icon = styled.img``;
+export const NavLogo = styled.span`
+  color: #fe71ac;
+`;
+
+export const NavText = styled(NavLogo)`
+  color: #9362b9;
+`;

@@ -4,11 +4,11 @@ export default function OrderNav() {
   // maybe BreadCrumb
   return (
     <>
-      <div className="p-3">
-        <span>Shipping</span>
-        <IoIosArrowForward />
+      <div className="p-4 ">
+        <span className="mr-2">Shipping</span>
+        <IoIosArrowForward className="mr-2" size="30px" />
         <span>Billing</span>
-        <IoIosArrowForward />
+        <IoIosArrowForward className="mr-2" size="30px" />
         <span>Payment</span>
       </div>
     </>
