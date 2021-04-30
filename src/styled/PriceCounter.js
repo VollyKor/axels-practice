@@ -5,8 +5,7 @@ export const Item = styled.div`
   justify-content: space-between;
 
   font-size: 0.8rem;
-
-  color: #757575;
+  color: var(--accent-text-color);
 `;
 
 export const Title = styled.p`
@@ -16,31 +15,33 @@ export const Title = styled.p`
 export const Price = styled(Title)``;
 
 export const Total = styled(Item)`
-  color: #5a1094;
+  color: var(--main-text-color);
   font-weight: 700;
 `;
 
 export const TotalPrice = styled(Total)``;
 
 const CinditionText = styled.p`
-  position: absolute;
   bottom: 0;
-
+  position: initial;
   text-align: center;
   font-size: 0.6rem;
 
-  color: #757575;
+  @media screen and (min-width: 992px) {
+    position: absolute;
+    margin-top: 0.8rem;
+  } ;
 `;
 const ConditionLink = styled.a`
   font-size: 0.65rem;
-  color: #757575;
+  color: var(--text-accent-color);
 `;
 
 export function Conditions() {
   return (
-    <CinditionText className="ml-2">
+    <CinditionText className="ml-2 text-muted">
       All puraches are subject to our{" "}
-      <ConditionLink href="/" target="_blanc">
+      <ConditionLink href="/" target="_blanc" classname="text-muted">
         Terms and Conditions
       </ConditionLink>
     </CinditionText>

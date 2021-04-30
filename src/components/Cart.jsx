@@ -1,7 +1,6 @@
-import ShippingForm from "../ShippingForm/ShippingForm";
-import OrderNav from "../OrderNav";
-import OrderSummary from "../OrderSummary/OrderSummary";
 import { Row, Col, Container } from "react-bootstrap";
+
+import { ShippingForm, OrderNav, OrderSummary } from "components";
 
 export default function Cart() {
   return (

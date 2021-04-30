@@ -1,6 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { NavLink, Navbar, NavLogo, NavText } from "./NavbarElements";
-import Cart from "../CartLink/CartLink";
+
+import { NavLink, Navbar, NavLogo, NavText } from "../styled/NavBar";
+import { CartLink } from "components";
 
 export default function NavBar() {
   return (
@@ -13,7 +14,7 @@ export default function NavBar() {
               <NavText className="h5">Front-end Developer Test Task</NavText>
             </NavLink>
             <NavLink to="/cart">
-              <Cart />
+              <CartLink />
             </NavLink>
           </Navbar>
         </Col>

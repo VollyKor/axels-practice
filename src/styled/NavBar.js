@@ -2,17 +2,13 @@ import styled from "styled-components";
 import { Nav } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
-function C_Navbar(props) {
-  return <Nav {...props}>{props.children}</Nav>;
-}
+const C_Navbar = (props) => <Nav {...props}>{props.children}</Nav>;
 
-function C_NavBarLink({ children, to }) {
-  return (
-    <LinkContainer to={to} exact>
-      <Nav.Link className="">{children}</Nav.Link>
-    </LinkContainer>
-  );
-}
+const C_NavBarLink = ({ children, to }) => (
+  <LinkContainer to={to} exact>
+    <Nav.Link className="">{children}</Nav.Link>
+  </LinkContainer>
+);
 
 export const Navbar = styled(C_Navbar)`
   background: rgb(255, 255, 255);

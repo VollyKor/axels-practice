@@ -1,6 +1,16 @@
-@import "bootstrap/scss/bootstrap";
+// $grid-breakpoints: (
+//   xs: 0px,
+//   sm: 400px,
+//   md: 768px,
+//   lg: 992px,
+//   xl: 1200px,
+//   xxl: 1400px,
+// );
 
-@import "./common/variables";
+// example of changing values
+// $primary: #212121;
+
+@import "bootstrap/scss/bootstrap";
 
 @import "./common/old.scss";
 @import "./common/common.scss";

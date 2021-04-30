@@ -1,4 +1,5 @@
 import ListGroupItem from "react-bootstrap/ListGroupItem";
+
 import {
   Item,
   Title,
@@ -6,7 +7,7 @@ import {
   Total,
   TotalPrice,
   Conditions,
-} from "./PriceCounterComponents";
+} from "../styled/PriceCounter";
 
 export default function PriceCounter() {
   return (

@@ -1,5 +1,6 @@
+import { CartWrapper, CartText, CartNotification } from "../styled/CartLink";
+
 import { IoCartOutline } from "react-icons/io5";
-import { CartWrapper, CartText, CartNotification } from "./CartLinkElements";
 
 export default function Cart() {
   return (

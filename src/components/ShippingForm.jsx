@@ -1,7 +1,6 @@
-import Form from "react-bootstrap/form";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import { FormPhoneDesc, CityInput, SubmitButton } from "./ShippingFormElements";
+import { Form, Col } from "react-bootstrap";
+
+import { FormPhoneDesc, CityInput, SubmitButton } from "../styled/ShippingForm";
 
 export default function ShippingForm() {
   return (
@@ -54,29 +53,10 @@ export default function ShippingForm() {
             </Form.Group>
           </Col>
         </Form.Row>
-        <SubmitButton type="submit" className="px-5 py-2">
+        <SubmitButton type="submit" className="px-4 px-sm-5 py-2">
           Continue
         </SubmitButton>
       </Form>
     </>
   );
 }
-
-/* 
-Form
-
-  Recipient 
-
-  Full NAme
-  phone number +mask
-
-  Address
-  
-  Street
-  number
-
-  city
-  country(dropdown) index
-  
-
-*/
