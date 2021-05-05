@@ -1,13 +1,11 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
-import { sagaWatcher, productsReducer } from "./reducers/products";
+
+import { productsReducer } from "./reducers/products";
+import sagaWatcher from "./saga";
 
 const reducer = {
   products: productsReducer,
-};
-
-const initialState = {
-  products: [],
 };
 
 const sagaMiddleware = createSagaMiddleware();
@@ -18,7 +16,6 @@ const store = configureStore({
   reducer,
   middleware,
   devTools: process.env.NODE_ENV !== "production",
-  initialState,
 });
 
 sagaMiddleware.run(sagaWatcher);

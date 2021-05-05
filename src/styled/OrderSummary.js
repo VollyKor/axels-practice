@@ -3,8 +3,6 @@ import Image from "react-bootstrap/Image";
 
 import Img from "../images/image-not-found.jpg";
 
-const Wrapper = styled.div``;
-
 const ProductName = styled.h2`
   margin-bottom: 2px;
   color: var(--text-accent-color);
@@ -25,11 +23,11 @@ export const ProductPrice = styled.p`
 `;
 
 export const ProductInfo = () => (
-  <Wrapper className="p-1">
+  <div className="p-1">
     <ProductName className="h6">{"Boots"}</ProductName>
     <ProductDescr>{"black"}</ProductDescr>
     <ProductQn>Quantity {1}</ProductQn>
-  </Wrapper>
+  </div>
 );
 
 export const ProductImg = () => (

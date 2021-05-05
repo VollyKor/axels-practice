@@ -1,31 +1,24 @@
-import axios from "axios";
 import { createAction, createReducer } from "@reduxjs/toolkit";
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put } from "redux-saga/effects";
 
-const GET_PRODUCTS = "GET_PRODUCTS";
+import * as req from "../../service/requests";
 
+//   Actions
+// ===========================================
 const setProducts = createAction("products/set");
 
-const getProducts = async () =>
-  await axios.get("https://demo7166187.mockable.io/products");
+//  Functions
+// ==============================================
+export function* getProducts() {
+  const response = yield call(req.getProducts);
 
-export function* sagaWatcher() {
-  yield takeEvery(GET_PRODUCTS, GetProducts);
-}
-
-function* GetProducts() {
-  const {
-    data: { data },
-  } = yield call(getProducts);
+  const data = response.data.data;
 
   yield put(setProducts(data));
 }
 
+//  Reducers
+// =================================================
 export const productsReducer = createReducer([], (builder) => {
-  builder.addCase(setProducts, (state, { payload }) => {
-    console.log(payload);
-    state = payload;
-
-    return payload;
-  });
+  builder.addCase(setProducts, (_, { payload }) => payload);
 });
