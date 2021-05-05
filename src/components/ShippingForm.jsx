@@ -1,9 +1,10 @@
 import { useFormik } from 'formik';
 import { useRef } from 'react';
 import { Form, Col, Overlay, Popover } from 'react-bootstrap';
-import { shippingFormValidate } from '../service/validationSchemas';
 
+import { shippingFormValidate } from '../service/validationSchemas';
 import { FormPhoneDesc, CityInput, SubmitButton } from '../styled/ShippingForm';
+import Tooltip from './Tooltip';
 
 export default function ShippingForm() {
     const fullNameRef = useRef(null);
@@ -24,15 +25,17 @@ export default function ShippingForm() {
         country: '',
     };
 
-    const {
-        values,
-        handleBlur,
-        handleChange,
-        handleSubmit,
-        getFieldProps,
-        touched,
-        errors,
-    } = useFormik({
+    const fieldName = {
+        fullName: 'fullName',
+        phone: 'phone',
+        address: 'address',
+        gateCode: 'gateCode',
+        city: 'city',
+        zip: 'zip',
+        country: 'country',
+    };
+
+    const { handleSubmit, getFieldProps, touched, errors } = useFormik({
         initialValues,
         onSubmit: (values) => {
             localStorage.setItem('ShippingFormData', JSON.stringify(values));
@@ -49,47 +52,38 @@ export default function ShippingForm() {
             <Form className="p-4" onSubmit={handleSubmit}>
                 <Form.Label>Recipient</Form.Label>
 
-                <Form.Group controlId="name">
+                <Form.Group>
                     <Form.Control
                         ref={fullNameRef}
                         type="name"
                         placeholder="Full name"
-                        {...getFieldProps('fullName')}
-                        className={getWarningStyleBg('fullName')}
+                        {...getFieldProps(fieldName.fullName)}
+                        className={getWarningStyleBg(fieldName.fullName)}
                     />
-
-                    <Overlay
-                        target={fullNameRef.current}
-                        show={touched.fullName && !!errors.fullName}
-                        placement="top"
-                    >
-                        <Popover className="bg-white text-danger p-1 px-3 border-none shadow">
-                            {errors.fullName}
-                        </Popover>
-                    </Overlay>
+                    <Tooltip
+                        fieldName={fieldName.fullName}
+                        forwardRef={fullNameRef}
+                        touched={touched}
+                        errors={errors}
+                    />
                 </Form.Group>
 
                 <Form.Row className="align-items-center">
                     <Col lg={6}>
-                        <Form.Group controlId="phone">
+                        <Form.Group>
                             <Form.Control
                                 type="phone"
                                 ref={phoneRef}
                                 placeholder="Daytime Phone"
-                                className={getWarningStyleBg('phone')}
-                                {...getFieldProps('phone')}
+                                className={getWarningStyleBg(fieldName.phone)}
+                                {...getFieldProps(fieldName.phone)}
                             />
-
-                            <Overlay
-                                target={phoneRef.current}
-                                show={touched.phone && !!errors.phone}
-                                placement="top-start"
-                                className="bg-primary"
-                            >
-                                <Popover className="bg-white text-danger p-1 px-3 border-none shadow">
-                                    {errors.phone}
-                                </Popover>
-                            </Overlay>
+                            <Tooltip
+                                fieldName={fieldName.phone}
+                                forwardRef={phoneRef}
+                                touched={touched}
+                                errors={errors}
+                            />
                         </Form.Group>
                     </Col>
 
@@ -102,89 +96,69 @@ export default function ShippingForm() {
 
                 <Form.Label>Address</Form.Label>
 
-                <Form.Group controlId="address">
+                <Form.Group>
                     <Form.Control
                         ref={addressRef}
                         type="text"
                         placeholder="Street Address"
-                        {...getFieldProps('address')}
-                        className={getWarningStyleBg('address')}
+                        {...getFieldProps(fieldName.address)}
+                        className={getWarningStyleBg(fieldName.address)}
                     />
-
-                    <Overlay
-                        target={addressRef.current}
-                        show={touched.address && !!errors.address}
-                        placement="top-start"
-                        className="bg-primary"
-                    >
-                        <Popover className="bg-white text-danger p-1 px-3 border-none shadow">
-                            {errors.address}
-                        </Popover>
-                    </Overlay>
+                    <Tooltip
+                        fieldName={fieldName.address}
+                        forwardRef={addressRef}
+                        touched={touched}
+                        errors={errors}
+                    />
                 </Form.Group>
 
-                <Form.Group controlId="gate-code">
+                <Form.Group>
                     <Form.Control
                         type="text"
-                        name="gateCode"
                         ref={GateCodeRef}
                         placeholder="Apt, Suit, Bldg, Gate Code. (optional)"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.gateCode}
-                        className={errors.gateCode && 'bg-warning'}
+                        {...getFieldProps(fieldName.gateCode)}
+                        className={getWarningStyleBg(fieldName.gateCode)}
                     />
 
-                    <Overlay
-                        target={GateCodeRef.current}
-                        show={touched.gateCode && !!errors.gateCode}
-                        placement="top-start"
-                        className="bg-primary"
-                    >
-                        <Popover className="bg-white text-danger p-1 px-3 border-none shadow">
-                            {errors.gateCode}
-                        </Popover>
-                    </Overlay>
+                    <Tooltip
+                        fieldName={fieldName.gateCode}
+                        forwardRef={GateCodeRef}
+                        touched={touched}
+                        errors={errors}
+                    />
                 </Form.Group>
 
                 <CityInput
                     inputRef={cityRef}
-                    className={getWarningStyleBg('city')}
-                    {...getFieldProps('city')}
+                    className={getWarningStyleBg(fieldName.city)}
+                    {...getFieldProps(fieldName.city)}
                 />
 
-                <Overlay
-                    target={cityRef.current}
-                    show={touched.city && !!errors.city}
-                    placement="top"
-                    className="bg-primary"
-                >
-                    <Popover className="bg-white text-danger p-1 px-3 border-none shadow">
-                        {errors.city}
-                    </Popover>
-                </Overlay>
+                <Tooltip
+                    fieldName={fieldName.city}
+                    forwardRef={cityRef}
+                    touched={touched}
+                    errors={errors}
+                />
 
                 <Form.Row>
                     <Col lg={7}>
-                        <Form.Group controlId="country">
+                        <Form.Group>
                             <Form.Control
                                 type="text"
                                 ref={countryRef}
                                 placeholder="Country"
-                                className={getWarningStyleBg('country')}
-                                {...getFieldProps('country')}
+                                className={getWarningStyleBg(fieldName.country)}
+                                {...getFieldProps(fieldName.country)}
                             />
 
-                            <Overlay
-                                target={countryRef.current}
-                                show={touched.country && !!errors.country}
-                                placement="bottom-start"
-                                className="bg-primary"
-                            >
-                                <Popover className="bg-white text-danger p-1 px-3 border-none shadow">
-                                    {errors.country}
-                                </Popover>
-                            </Overlay>
+                            <Tooltip
+                                fieldName={fieldName.country}
+                                forwardRef={cityRef}
+                                touched={touched}
+                                errors={errors}
+                            />
                         </Form.Group>
                     </Col>
 
@@ -194,20 +168,16 @@ export default function ShippingForm() {
                                 type="text"
                                 ref={zipCodeRef}
                                 placeholder="ZIP"
-                                className={getWarningStyleBg('zip')}
-                                {...getFieldProps('zip')}
+                                className={getWarningStyleBg(fieldName.zip)}
+                                {...getFieldProps(fieldName.zip)}
                             />
 
-                            <Overlay
-                                target={zipCodeRef.current}
-                                show={touched.zip && !!errors.zip}
-                                placement="top-end"
-                                className="bg-primary"
-                            >
-                                <Popover className="bg-white text-danger p-1 px-3 border-none shadow">
-                                    {errors.zip}
-                                </Popover>
-                            </Overlay>
+                            <Tooltip
+                                fieldName={fieldName.zip}
+                                forwardRef={cityRef}
+                                touched={touched}
+                                errors={errors}
+                            />
                         </Form.Group>
                     </Col>
                 </Form.Row>
