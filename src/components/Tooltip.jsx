@@ -13,7 +13,7 @@ export default function Tooltip({
             placement="top"
         >
             <Popover className="bg-white text-danger p-1 px-3 border-none shadow">
-                {errors.fullName}
+                {errors[fieldName]}
             </Popover>
         </Overlay>
     ) : (

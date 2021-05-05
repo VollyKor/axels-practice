@@ -1,56 +1,69 @@
-import { useFormik } from 'formik';
 import { useRef } from 'react';
-import { Form, Col, Overlay, Popover } from 'react-bootstrap';
+import { Form, Col, Row, Button } from 'react-bootstrap';
+import { useFormik } from 'formik';
 
-import { shippingFormValidate } from '../service/validationSchemas';
-import { FormPhoneDesc, CityInput, SubmitButton } from '../styled/ShippingForm';
-import Tooltip from './Tooltip';
+import { Tooltip } from 'components';
+import { CityInput, SubmitButton } from '../../styled/ShippingForm';
 
-export default function ShippingForm() {
+import {
+    formType,
+    initialBillingFormValues,
+    fieldName,
+    localStorageKey,
+} from 'helpers/constants';
+import { BillingFormValidate } from '../../helpers/validationSchemas';
+
+export default function BillingForm({ setCurrentForm }) {
     const fullNameRef = useRef(null);
-    const phoneRef = useRef(null);
+    const emailRef = useRef(null);
     const addressRef = useRef(null);
     const cityRef = useRef(null);
     const GateCodeRef = useRef(null);
     const countryRef = useRef(null);
     const zipCodeRef = useRef(null);
 
-    const initialValues = {
-        fullName: '',
-        phone: '',
-        address: '',
-        gateCode: '',
-        city: '',
-        zip: '',
-        country: '',
-    };
+    const {
+        handleSubmit,
+        getFieldProps,
+        touched,
+        errors,
+        resetForm,
+    } = useFormik({
+        initialValues: initialBillingFormValues,
+        onSubmit: (FormData) => {
+            localStorage.setItem(
+                localStorageKey.billingForm,
+                JSON.stringify(FormData)
+            );
 
-    const fieldName = {
-        fullName: 'fullName',
-        phone: 'phone',
-        address: 'address',
-        gateCode: 'gateCode',
-        city: 'city',
-        zip: 'zip',
-        country: 'country',
-    };
-
-    const { handleSubmit, getFieldProps, touched, errors } = useFormik({
-        initialValues,
-        onSubmit: (values) => {
-            localStorage.setItem('ShippingFormData', JSON.stringify(values));
+            setCurrentForm(formType.Payment);
+            console.log('click');
         },
-        validationSchema: shippingFormValidate,
+        validationSchema: BillingFormValidate,
     });
 
     const getWarningStyleBg = (field) =>
         errors[field] && touched[field] && 'bg-warning';
 
+    const handleClick = () => {
+        const JsonData = localStorage.getItem(localStorageKey.shippingForm);
+        const data = JSON.parse(JsonData);
+        resetForm({ values: { ...initialBillingFormValues, ...data } });
+    };
+
     return (
         <>
-            <h2 className="ml-4">Shipping Info</h2>
+            <Row className="justify-content-between pt-3 px-3 mt-2 align-items-baseline">
+                <h2 className="ml-4">Billing Information</h2>
+                <Button className="text-muted bg-transparent border-0 p-0">
+                    <u className="p-0 h6 ml-4">
+                        <small onClick={handleClick}>Same as Shipping</small>
+                    </u>
+                </Button>
+            </Row>
+
             <Form className="p-4" onSubmit={handleSubmit}>
-                <Form.Label>Recipient</Form.Label>
+                <Form.Label>Billing Contact</Form.Label>
 
                 <Form.Group>
                     <Form.Control
@@ -60,6 +73,7 @@ export default function ShippingForm() {
                         {...getFieldProps(fieldName.fullName)}
                         className={getWarningStyleBg(fieldName.fullName)}
                     />
+
                     <Tooltip
                         fieldName={fieldName.fullName}
                         forwardRef={fullNameRef}
@@ -68,33 +82,24 @@ export default function ShippingForm() {
                     />
                 </Form.Group>
 
-                <Form.Row className="align-items-center">
-                    <Col lg={6}>
-                        <Form.Group>
-                            <Form.Control
-                                type="phone"
-                                ref={phoneRef}
-                                placeholder="Daytime Phone"
-                                className={getWarningStyleBg(fieldName.phone)}
-                                {...getFieldProps(fieldName.phone)}
-                            />
-                            <Tooltip
-                                fieldName={fieldName.phone}
-                                forwardRef={phoneRef}
-                                touched={touched}
-                                errors={errors}
-                            />
-                        </Form.Group>
-                    </Col>
+                <Form.Group>
+                    <Form.Control
+                        type="email"
+                        ref={emailRef}
+                        placeholder="Email Address"
+                        className={getWarningStyleBg(fieldName.email)}
+                        {...getFieldProps(fieldName.email)}
+                    />
 
-                    <Col lg={4}>
-                        <FormPhoneDesc className="text-muted">
-                            For delivery questions only
-                        </FormPhoneDesc>
-                    </Col>
-                </Form.Row>
+                    <Tooltip
+                        fieldName={fieldName.email}
+                        forwardRef={emailRef}
+                        touched={touched}
+                        errors={errors}
+                    />
+                </Form.Group>
 
-                <Form.Label>Address</Form.Label>
+                <Form.Label>Billing Address</Form.Label>
 
                 <Form.Group>
                     <Form.Control
@@ -104,6 +109,7 @@ export default function ShippingForm() {
                         {...getFieldProps(fieldName.address)}
                         className={getWarningStyleBg(fieldName.address)}
                     />
+
                     <Tooltip
                         fieldName={fieldName.address}
                         forwardRef={addressRef}
@@ -147,15 +153,15 @@ export default function ShippingForm() {
                         <Form.Group>
                             <Form.Control
                                 type="text"
-                                ref={countryRef}
                                 placeholder="Country"
+                                ref={countryRef}
                                 className={getWarningStyleBg(fieldName.country)}
                                 {...getFieldProps(fieldName.country)}
                             />
 
                             <Tooltip
                                 fieldName={fieldName.country}
-                                forwardRef={cityRef}
+                                forwardRef={countryRef}
                                 touched={touched}
                                 errors={errors}
                             />
@@ -166,15 +172,15 @@ export default function ShippingForm() {
                         <Form.Group controlId="zip">
                             <Form.Control
                                 type="text"
-                                ref={zipCodeRef}
                                 placeholder="ZIP"
+                                ref={zipCodeRef}
                                 className={getWarningStyleBg(fieldName.zip)}
                                 {...getFieldProps(fieldName.zip)}
                             />
 
                             <Tooltip
                                 fieldName={fieldName.zip}
-                                forwardRef={cityRef}
+                                forwardRef={zipCodeRef}
                                 touched={touched}
                                 errors={errors}
                             />
