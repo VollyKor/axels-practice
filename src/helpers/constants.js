@@ -52,4 +52,3 @@ export const localStorageKey = {
     paymentForm: 'paymentForm',
 };
 
-export const GOOGLE_API_KEY = 'AIzaSyDPIS2UR-D2XnG-hIW5SJIAXJ4mKcpK5XY';
