@@ -7,6 +7,7 @@ export { default as OrderNav } from './OrderNav';
 export { default as OrderSummary } from './OrderSummary';
 export { default as PriceCounter } from './PriceCounter';
 export { default as Tooltip } from './Tooltip';
+export { default as OrderData } from './OrderData';
 
 // Forms
 export { default as ShippingForm } from './forms/ShippingForm';

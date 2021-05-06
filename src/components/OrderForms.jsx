@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
-import OrderNav from './OrderNav';
-import { ShippingForm, BillingForm, PaymentForm } from 'components';
+import { ShippingForm, BillingForm, PaymentForm, OrderNav } from 'components';
 
 import { formType } from '../helpers/constants';
 
@@ -23,7 +22,10 @@ export default function OrderForms() {
 
     return (
         <>
-            <OrderNav currentForm={currentForm} />
+            <OrderNav
+                currentForm={currentForm}
+                setCurrentForm={setCurrentForm}
+            />
             {renderForm()}
         </>
     );

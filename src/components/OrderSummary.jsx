@@ -9,7 +9,7 @@ import { ProductInfo, ProductPrice, ProductImg } from '../styled/OrderSummary';
 import { GET_PRODUCTS } from '../redux/saga';
 
 export default function OrderSummary() {
-    const [quantity, setQuantity] = useState(1);
+    const [quantity] = useState(1);
     const dispatch = useDispatch();
     const products = useSelector((state) => state.products);
 
@@ -23,7 +23,9 @@ export default function OrderSummary() {
                 <h2 className="h6">OrderSummary</h2>
                 <LinkContainer to="/">
                     <NavLink className="text-muted">
-                        <u>edit order</u>
+                        <small>
+                            <u>edit order</u>
+                        </small>
                     </NavLink>
                 </LinkContainer>
             </Row>

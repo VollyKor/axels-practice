@@ -1,9 +1,9 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 :root{
   /* bootstrap variable */
-  --primary :  #5B1195;
+  --primary :  #5f2093;
 
   /* app variables */
   --main-bg-color: #E6E9F0;
@@ -27,6 +27,8 @@ const GlobalStyle = createGlobalStyle`
 }
 
   body {
+    box-sizing: border-box;
+
     margin: 0;
     padding: 0;
 
@@ -35,6 +37,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: Open-Sans, Helvetica, Sans-Serif;
     color: var(--main-text-color);
   }
+
+  a {
+    color: inherit
+    }
 `;
 
 export default GlobalStyle;

@@ -37,7 +37,6 @@ export default function BillingForm({ setCurrentForm }) {
             );
 
             setCurrentForm(formType.Payment);
-            console.log('click');
         },
         validationSchema: BillingFormValidate,
     });

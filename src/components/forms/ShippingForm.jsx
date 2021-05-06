@@ -1,13 +1,9 @@
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Form, Col } from 'react-bootstrap';
 import { useFormik } from 'formik';
-
 import { Tooltip } from 'components';
-import {
-    FormPhoneDesc,
-    CityInput,
-    SubmitButton,
-} from '../../styled/ShippingForm';
+
+import { FormPhoneDesc, CityInput, SubmitButton } from 'styled/ShippingForm';
 
 import {
     formType,
@@ -15,9 +11,14 @@ import {
     fieldName,
     localStorageKey,
 } from 'helpers/constants';
-import { shippingFormValidate } from '../../helpers/validationSchemas';
+
+import getGeo from 'helpers/getGeo';
+import { shippingFormValidate } from 'helpers/validationSchemas';
 
 export default function ShippingForm({ setCurrentForm }) {
+    const [geoposition, setGeoposition] = useState(null);
+    const [address, setAddress] = useState(null);
+
     const fullNameRef = useRef(null);
     const phoneRef = useRef(null);
     const addressRef = useRef(null);
@@ -26,18 +27,39 @@ export default function ShippingForm({ setCurrentForm }) {
     const countryRef = useRef(null);
     const zipCodeRef = useRef(null);
 
-    const { handleSubmit, getFieldProps, touched, errors } = useFormik({
+    const {
+        handleSubmit,
+        getFieldProps,
+        touched,
+        errors,
+        resetForm,
+    } = useFormik({
         initialValues: initialShippingFormValues,
         onSubmit: (FormData) => {
             localStorage.setItem(
                 localStorageKey.shippingForm,
                 JSON.stringify(FormData)
             );
-
             setCurrentForm(formType.Billing);
         },
         validationSchema: shippingFormValidate,
     });
+
+    useEffect(() => {
+        if (!geoposition) {
+            navigator.geolocation.getCurrentPosition((position) =>
+                setGeoposition(position)
+            );
+        }
+
+        getGeo(geoposition, setAddress);
+    }, [geoposition]);
+
+    useEffect(() => {
+        if (address) {
+            resetForm({ values: { ...initialShippingFormValues, ...address } });
+        }
+    }, [address, resetForm]);
 
     const getWarningStyleBg = (field) =>
         errors[field] && touched[field] && 'bg-warning';

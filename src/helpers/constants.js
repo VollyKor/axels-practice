@@ -1,3 +1,18 @@
+export const fieldName = {
+    email: 'email',
+    fullName: 'fullName',
+    phone: 'phone',
+    address: 'address',
+    gateCode: 'gateCode',
+    city: 'city',
+    zip: 'zip',
+    country: 'country',
+    cardholder: 'cardholder',
+    cardNumber: 'cardNumber',
+    expireDate: 'expireDate',
+    securityCode: 'securityCode',
+};
+
 export const formType = {
     Shipping: 'Shipping',
     Billing: 'Billing',
@@ -24,15 +39,11 @@ export const initialBillingFormValues = {
     country: '',
 };
 
-export const fieldName = {
-    email: 'email',
-    fullName: 'fullName',
-    phone: 'phone',
-    address: 'address',
-    gateCode: 'gateCode',
-    city: 'city',
-    zip: 'zip',
-    country: 'country',
+export const initialPaymentFormValues = {
+    cardholder: '',
+    cardNumber: '',
+    expireDate: '',
+    securityCode: '',
 };
 
 export const localStorageKey = {
@@ -40,3 +51,5 @@ export const localStorageKey = {
     billingForm: 'billingForm',
     paymentForm: 'paymentForm',
 };
+
+export const GOOGLE_API_KEY = 'AIzaSyDPIS2UR-D2XnG-hIW5SJIAXJ4mKcpK5XY';
