@@ -1,8 +1,9 @@
 import Geocode from 'react-geocode';
 
-import { GOOGLE_API_KEY, fieldName } from './constants';
+import { fieldName } from './constants';
+const { REACT_APP_GOOGLE_API_KEY } = process.env;
 
-Geocode.setApiKey(GOOGLE_API_KEY);
+Geocode.setApiKey(REACT_APP_GOOGLE_API_KEY);
 Geocode.setLanguage('en');
 
 const getGeo = async (geoposition, setAddress) => {

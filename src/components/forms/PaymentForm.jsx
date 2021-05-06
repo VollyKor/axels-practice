@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, Col, Row } from 'react-bootstrap';
 import { useFormik } from 'formik';
+import Autocomplete from 'react-google-autocomplete';
 
 import { Tooltip } from 'components';
 import { SubmitButton } from '../../styled/ShippingForm';
@@ -9,7 +10,6 @@ import { CheckIcon } from '../../styled/PaymentForm';
 import { BiLockAlt } from 'react-icons/bi';
 
 import {
-    formType,
     initialPaymentFormValues,
     fieldName,
     localStorageKey,
@@ -26,13 +26,14 @@ export default function PaymentForm() {
 
     const { handleSubmit, getFieldProps, touched, errors } = useFormik({
         initialValues: initialPaymentFormValues,
+
         onSubmit: async (formData) => {
             localStorage.setItem(
                 localStorageKey.paymentForm,
                 JSON.stringify(formData)
             );
 
-            await history.push('/cart/success');
+            history.push('/cart/success');
         },
         validationSchema: PaymentFormValidate,
     });

@@ -1,7 +1,9 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useMemo } from 'react';
 import { Form, Col } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import { Tooltip } from 'components';
+import { usePlacesWidget } from 'react-google-autocomplete';
+import countryList from 'react-select-country-list';
 
 import { FormPhoneDesc, CityInput, SubmitButton } from 'styled/ShippingForm';
 
@@ -11,14 +13,17 @@ import {
     fieldName,
     localStorageKey,
 } from 'helpers/constants';
-
 import getGeo from 'helpers/getGeo';
 import { shippingFormValidate } from 'helpers/validationSchemas';
+
+const { REACT_APP_GOOGLE_API_KEY } = process.env;
 
 export default function ShippingForm({ setCurrentForm }) {
     const [geoposition, setGeoposition] = useState(null);
     const [address, setAddress] = useState(null);
 
+    const options = useMemo(() => countryList().getData(), []);
+    console.log(options);
     const fullNameRef = useRef(null);
     const phoneRef = useRef(null);
     const addressRef = useRef(null);
@@ -29,6 +34,7 @@ export default function ShippingForm({ setCurrentForm }) {
 
     const {
         handleSubmit,
+        setFieldValue,
         getFieldProps,
         touched,
         errors,
@@ -43,6 +49,18 @@ export default function ShippingForm({ setCurrentForm }) {
             setCurrentForm(formType.Billing);
         },
         validationSchema: shippingFormValidate,
+    });
+
+    const { ref } = usePlacesWidget({
+        apiKey: REACT_APP_GOOGLE_API_KEY,
+        options: {
+            types: ['(country)'],
+            componentRestrictions: { country: 'ua' },
+        },
+        onPlaceSelected: (place) => {
+            console.log(place);
+            setFieldValue(fieldName.country, place.formatted_address);
+        },
     });
 
     useEffect(() => {
@@ -68,6 +86,9 @@ export default function ShippingForm({ setCurrentForm }) {
         <>
             <h2 className="ml-4">Shipping Info</h2>
             <Form className="p-4" onSubmit={handleSubmit}>
+                <Form.Group>
+                    <Form.Control ref={ref} />
+                </Form.Group>
                 <Form.Label>Recipient</Form.Label>
 
                 <Form.Group>
@@ -154,7 +175,6 @@ export default function ShippingForm({ setCurrentForm }) {
                     className={getWarningStyleBg(fieldName.city)}
                     {...getFieldProps(fieldName.city)}
                 />
-
                 <Tooltip
                     fieldName={fieldName.city}
                     forwardRef={cityRef}
@@ -166,12 +186,17 @@ export default function ShippingForm({ setCurrentForm }) {
                     <Col lg={7}>
                         <Form.Group>
                             <Form.Control
+                                as="select"
                                 type="text"
                                 ref={countryRef}
                                 placeholder="Country"
                                 className={getWarningStyleBg(fieldName.country)}
                                 {...getFieldProps(fieldName.country)}
-                            />
+                            >
+                                {options.map((el) => (
+                                    <option key={el.label}>{el.label}</option>
+                                ))}
+                            </Form.Control>
 
                             <Tooltip
                                 fieldName={fieldName.country}

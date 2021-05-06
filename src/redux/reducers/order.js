@@ -1,5 +1,5 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
-import { call, put } from 'redux-saga/effects';
+import { put } from 'redux-saga/effects';
 
 import * as req from '../../helpers/requests';
 
