@@ -9,7 +9,7 @@ export const CheckIcon = styled(RiCheckboxCircleFill)`
 
     width: 12px;
     height: 12px;
-    color: '#ffffff';
+    color: var(--white-color);
     background-color: white;
     border-radius: 50%;
 `;

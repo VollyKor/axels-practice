@@ -11,19 +11,16 @@ const GlobalStyle = createGlobalStyle`
 
   --main-text-color: #5B1195;
   --accent-text-color : #808181;
-
+  
+  --logo-color: #c26ea9;
   --cart-link: #c90ea5;
 
+  --half-transparent-white-color: rgba(255, 255, 255, 0.5);
+
+  --white-color: #fff;
   --black-color: #212121;
   --pink-color: #ff1876;
 
-  /* doesn't work */
-  --breakpoint-xs: 0px;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-  --breakpoint-xxl: 1400px;
 }
 
   body {
@@ -38,7 +35,7 @@ const GlobalStyle = createGlobalStyle`
     color: var(--main-text-color);
 
     @media print {
-      background-color: white;
+      background-color: var(--white-color);
     }
   }
 
@@ -50,14 +47,8 @@ const GlobalStyle = createGlobalStyle`
   color: var(--accent-text-color)
 }
     .navlink.active{
-      color: var(----main-text-color);
+      color: var(--main-text-color);
     }
 `;
 
 export default GlobalStyle;
-
-// --primary  main-text-color: #5B1195;
-// accent-text-color : $e6e9f0
-// muted-color:
-// black-color: $2f2929;
-// white-color

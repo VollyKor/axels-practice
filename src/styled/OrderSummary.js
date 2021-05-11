@@ -23,7 +23,7 @@ export const ProductQn = styled(ProductDescr)``;
 export const ProductPrice = styled.p`
     margin-left: auto;
     font-size: 0.8rem;
-    color: #757575;
+    color: var(--accent-text-color);
 `;
 
 export const ProductsContainer = styled.div``;
