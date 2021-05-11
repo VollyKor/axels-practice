@@ -13,6 +13,8 @@ const C_NavBarLink = ({ children, to }) => (
 export const Navbar = styled(C_Navbar)`
     background: var(--white-color);
     border-bottom: 1px solid var(--logo-color);
+    text-align: center;
+
     justify-content: center;
 
     @media ${(props) => props.theme?.deviceSize?.small} {

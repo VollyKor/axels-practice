@@ -30,7 +30,7 @@ const PriceCounter = () => (
 
         <Item className="d-flex justify-content-between p-0">
             <Total>Total</Total>
-            <TotalPrice>${410.12}</TotalPrice>
+            <TotalPrice className="mb-4">${410.12}</TotalPrice>
         </Item>
 
         <Conditions />

@@ -1,32 +1,34 @@
 import { NavLink } from 'react-router-dom';
 import { IoIosArrowForward } from 'react-icons/io';
 
+import { NavWrapper, Link, Icon } from '../styled/OrderNav';
+
 const OrderNav = () => (
-    <div className="p-4 ">
-        <NavLink
+    <NavWrapper className="p-4">
+        <Link
             to="/cart/shipping"
             className="navlink mr-2"
             activeClassName="active"
         >
             Shipping
-        </NavLink>
-        <IoIosArrowForward className="mr-2" size="30px" color="#808181" />
-        <NavLink
+        </Link>
+        <Icon className="mr-2" size="30px" color="#808181" />
+        <Link
             to="/cart/billing"
             className="navlink mr-2"
             activeClassName="active"
         >
             Billing
-        </NavLink>
-        <IoIosArrowForward className="mr-2" size="30px" color="#808181" />
-        <NavLink
+        </Link>
+        <Icon className="mr-2" size="30px" color="#808181" />
+        <Link
             to="/cart/payment"
             className="navlink mr-2"
             activeClassName="active"
         >
             Payment
-        </NavLink>
-    </div>
+        </Link>
+    </NavWrapper>
 );
 
 export default OrderNav;

@@ -61,8 +61,8 @@ export default function BillingForm() {
         <>
             <Row className="justify-content-between px-3 align-items-baseline">
                 <h2 className="ml-4 h4">Billing Information</h2>
-                <Button className="text-muted bg-transparent border-0 p-0">
-                    <u className="p-0 h6 ml-1">
+                <Button className="text-muted bg-transparent border-0 p-0 mx-auto">
+                    <u className="p-0 h6 ml-1 ">
                         <small onClick={handleClick}>Same as Shipping</small>
                     </u>
                 </Button>

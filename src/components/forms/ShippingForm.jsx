@@ -50,15 +50,10 @@ export default function ShippingForm() {
     const getWarningStyleBg = (field) =>
         errors[field] && touched[field] && 'bg-warning';
 
-    // const { ref: bootstrapRef } = usePlacesWidget({
-    //     apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-    //     onPlaceSelected: (place) => console.log(place),
-    // });
-
     return (
         <>
             <h2 className="ml-4 h4">Shipping Info</h2>
-            <Form className="px-4 pt-1 pb-5" onSubmit={handleSubmit}>
+            <Form className="px-1 px-md-4 pt-1 pb-5" onSubmit={handleSubmit}>
                 <Form.Label>Recipient</Form.Label>
 
                 <Form.Group>

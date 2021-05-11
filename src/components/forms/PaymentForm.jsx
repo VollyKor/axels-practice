@@ -43,9 +43,9 @@ export default function PaymentForm() {
     return (
         <>
             <h2 className="ml-4 h4">Payment</h2>
-            <Form className="px-4 pt-1 pb-5" onSubmit={handleSubmit}>
-                <div className="text-muted d-flex align-items-baseline ">
-                    <div className="position-relative mb-3">
+            <Form className="px-1 px-md-4 pt-1 pb-5" onSubmit={handleSubmit}>
+                <div className="text-muted d-flex align-items-baseline mb-3">
+                    <div className="position-relative ">
                         <BiLockAlt size="25px" />
                         <CheckIcon fill="green" />
                     </div>
