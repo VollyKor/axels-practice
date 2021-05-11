@@ -3,11 +3,14 @@ import { IoCartOutline } from 'react-icons/io5';
 
 import { Wrapper } from './utils';
 
+export const CartName = styled.span``;
+export const CartQuantyty = styled.p``;
+
 export const Cart = () => (
     <Wrapper>
-        <span className="mr-1">cart</span>
+        <CartName className="mr-1">cart</CartName>
         <IoCartOutline size="25px" />
-        <p>1</p>
+        <CartQuantyty>1</CartQuantyty>
     </Wrapper>
 );
 
