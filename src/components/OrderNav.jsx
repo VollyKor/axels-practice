@@ -1,6 +1,3 @@
-import { NavLink } from 'react-router-dom';
-import { IoIosArrowForward } from 'react-icons/io';
-
 import { NavWrapper, Link, Icon } from '../styled/OrderNav';
 
 const OrderNav = () => (
