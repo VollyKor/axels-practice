@@ -3,12 +3,8 @@ import { put } from 'redux-saga/effects';
 
 import * as req from '../../helpers/requests';
 
-//   Actions
-// ===========================================
 const sendOrder = createAction('order/post');
 
-//  Functions
-// ==============================================
 export function* postOrder(orderData) {
     const response = yield req.postOrder(orderData);
     yield put(sendOrder(response.data.data));
@@ -20,8 +16,6 @@ const initialState = {
     deliverydate: '',
 };
 
-//  Reducers
-// =================================================
 export const orderReducer = createReducer(initialState, (builder) => {
     builder.addCase(sendOrder, (_, { payload }) => payload);
 });
