@@ -6,27 +6,25 @@ import PrintPage from './PrintPage';
 
 import GlobalStyles from '../styled/globalStyles';
 
-function App() {
-    return (
-        <>
-            <GlobalStyles />
+const App = () => (
+    <>
+        <GlobalStyles />
 
-            <Switch>
-                <Route path="/print" exact>
-                    <PrintPage />
+        <Switch>
+            <Route path="/print" exact>
+                <PrintPage />
+            </Route>
+            <Route path="/">
+                <Navbar />
+                <Route path="/" exact>
+                    <Container className="p-3" />
                 </Route>
-                <Route path="/">
-                    <Navbar />
-                    <Route path="/" exact>
-                        <Container className="p-3" />
-                    </Route>
-                    <Route path="/cart">
-                        <Cart />
-                    </Route>
+                <Route path="/cart">
+                    <Cart />
                 </Route>
-            </Switch>
-        </>
-    );
-}
+            </Route>
+        </Switch>
+    </>
+);
 
 export default App;

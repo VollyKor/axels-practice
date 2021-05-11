@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import { App } from 'components';
 import store from './redux/store';
 
-import 'react-bootstrap-country-select/dist/react-bootstrap-country-select.css';
 import './sass/main.scss';
 
 ReactDOM.render(
