@@ -6,13 +6,18 @@ const C_Navbar = (props) => <Nav {...props}>{props.children}</Nav>;
 
 const C_NavBarLink = ({ children, to }) => (
     <LinkContainer to={to} exact>
-        <Nav.Link className="">{children}</Nav.Link>
+        <Nav.Link>{children}</Nav.Link>
     </LinkContainer>
 );
 
 export const Navbar = styled(C_Navbar)`
     background: var(--white-color);
     border-bottom: 1px solid var(--logo-color);
+    justify-content: center;
+
+    @media ${(props) => props.theme?.deviceSize?.small} {
+        justify-content: space-around;
+    }
 `;
 
 export const NavLink = styled(C_NavBarLink)`

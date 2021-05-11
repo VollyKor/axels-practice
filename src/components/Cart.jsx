@@ -2,7 +2,7 @@ import { Route } from 'react-router-dom';
 import { Col, Container } from 'react-bootstrap';
 
 import { OrderSummary, OrderForms } from 'components';
-import { MinHeightRow, HalfTransparentWrapper } from '../styled/utils';
+import { MinHeightRow, HalfTransparentWrapper } from '../styled/utils/common';
 
 const Cart = () => (
     <Container>

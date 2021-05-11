@@ -19,3 +19,4 @@ export const HalfTransparentWrapper = styled.div`
 `;
 
 export const Wrapper = styled.div``;
+export const Container = styled.div``;

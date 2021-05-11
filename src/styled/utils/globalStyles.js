@@ -27,7 +27,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
 
     margin: 0;
-    padding: 0;
+    padding: ${(props) => {
+        console.log(props);
+        return 0;
+    }};
 
     background-color: var(--main-bg-color);
 

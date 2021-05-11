@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Image from 'react-bootstrap/Image';
 
-import { Wrapper } from './utils';
+import { Wrapper } from './utils/common';
 
 import Img from '../images/image-not-found.jpg';
 

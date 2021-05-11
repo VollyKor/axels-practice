@@ -1,13 +1,15 @@
 import Container from 'react-bootstrap/Container';
 import { Switch, Route } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 
 import { Cart, Navbar } from 'components';
 import PrintPage from './PrintPage';
 
-import GlobalStyles from '../styled/globalStyles';
+import GlobalStyles from '../styled/utils/globalStyles';
+import theme from '../styled/utils/themeStyles';
 
 const App = () => (
-    <>
+    <ThemeProvider theme={theme}>
         <GlobalStyles />
 
         <Switch>
@@ -24,7 +26,7 @@ const App = () => (
                 </Route>
             </Route>
         </Switch>
-    </>
+    </ThemeProvider>
 );
 
 export default App;

@@ -7,13 +7,14 @@ const NavBar = () => (
     <Container className="mb-5">
         <Row>
             <Col className="mx-auto">
-                <Navbar className="justify-content-around">
+                <Navbar>
                     <NavLink to="/">
                         <NavLogo className="mr-1">{'</>'}</NavLogo>
                         <NavText className="h5">
                             Front-end Developer Test Task
                         </NavText>
                     </NavLink>
+
                     <NavLink to="/cart/shipping">
                         <CartLink />
                     </NavLink>
