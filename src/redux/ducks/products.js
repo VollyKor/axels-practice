@@ -3,6 +3,8 @@ import { call, put } from 'redux-saga/effects';
 
 import * as req from '../../helpers/requests';
 
+export const GET_PRODUCTS = createAction('GET_PRODUCTS');
+
 const setProducts = createAction('products/set');
 
 export function* getProducts() {

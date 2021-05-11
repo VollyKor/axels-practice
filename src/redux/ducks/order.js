@@ -3,6 +3,8 @@ import { put } from 'redux-saga/effects';
 
 import * as req from '../../helpers/requests';
 
+export const POST_ORDER = createAction('POST_ORDER');
+
 const sendOrder = createAction('order/post');
 
 export function* postOrder(orderData) {

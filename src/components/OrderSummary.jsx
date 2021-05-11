@@ -6,7 +6,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { PriceCounter } from 'components';
 import { ProductInfo, ProductPrice, ProductImg } from '../styled/OrderSummary';
 
-import { GET_PRODUCTS } from '../redux/saga';
+import { GET_PRODUCTS } from '../redux/ducks/products';
 
 export default function OrderSummary() {
     const [quantity] = useState(1);

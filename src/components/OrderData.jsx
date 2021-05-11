@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import qs from 'query-string';
 
 import { getOrderDataFromLS } from 'helpers/localStorage';
-import { POST_ORDER } from '../redux/saga';
+import { POST_ORDER } from '../redux/ducks/order';
 
 export default function OrderData() {
     const { orderId, contactEmail, deliveryDate } = useSelector(

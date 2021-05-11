@@ -1,13 +1,9 @@
-import { createAction } from '@reduxjs/toolkit';
 import { takeEvery } from 'redux-saga/effects';
 
-import { getProducts } from './ducks/products';
-import { postOrder } from './ducks/order';
-
-export const GET_PRODUCTS = createAction('GET_PRODUCTS');
-export const POST_ORDER = createAction('POST_ORDER');
+import { getProducts, GET_PRODUCTS } from './ducks/products';
+import { postOrder, POST_ORDER } from './ducks/order';
 
 export default function* sagaWatcher() {
-    yield takeEvery('GET_PRODUCTS', getProducts);
-    yield takeEvery('POST_ORDER', postOrder);
+    yield takeEvery(GET_PRODUCTS.type, getProducts);
+    yield takeEvery(POST_ORDER.type, postOrder);
 }
