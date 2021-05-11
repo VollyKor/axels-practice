@@ -1,7 +1,7 @@
-import { LinkContainer } from 'react-router-bootstrap';
-import { Row, NavLink, ListGroup } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Row, NavLink, ListGroup } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 import { PriceCounter } from 'components';
 import { ProductInfo, ProductPrice, ProductImg } from '../styled/OrderSummary';

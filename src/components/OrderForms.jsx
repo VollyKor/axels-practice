@@ -2,8 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, useLocation } from 'react-router-dom';
 
-import { setGeo } from '../redux/ducks/geo';
-
 import {
     ShippingForm,
     BillingForm,
@@ -11,6 +9,8 @@ import {
     OrderNav,
     OrderData,
 } from 'components';
+
+import { setGeo } from '../redux/ducks/geo';
 
 export default function OrderForms() {
     const { pathname } = useLocation();

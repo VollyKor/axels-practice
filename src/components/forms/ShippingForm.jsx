@@ -2,7 +2,6 @@ import { useRef, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, Col } from 'react-bootstrap';
 import { useFormik } from 'formik';
-import countryList from 'react-select-country-list';
 
 import { CityInput, Tooltip } from 'components';
 import { FormPhoneDesc, SubmitButton } from 'styled/ShippingForm';
@@ -14,6 +13,7 @@ import {
 } from 'helpers/constants';
 import getGeo from 'helpers/getGeo';
 import { shippingFormValidate } from 'helpers/validationSchemas';
+import countryList from 'react-select-country-list';
 
 export default function ShippingForm() {
     const fullNameRef = useRef(null);

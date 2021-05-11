@@ -7,13 +7,11 @@ import { Tooltip, CityInput } from 'components';
 import { SubmitButton } from '../../styled/ShippingForm';
 
 import countryList from 'react-select-country-list';
-
 import {
     initialBillingFormValues,
     fieldName,
     localStorageKey,
 } from 'helpers/constants';
-
 import getGeo from 'helpers/getGeo';
 import { BillingFormValidate } from '../../helpers/validationSchemas';
 

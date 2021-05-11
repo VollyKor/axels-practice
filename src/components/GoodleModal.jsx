@@ -44,57 +44,55 @@ const GoogleModal = ({ fillForm, ...props }) => {
     if (!isLoaded) return 'Google Map Loading';
 
     return (
-        <>
-            <Modal
-                {...props}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        Choose Your Address
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    {true && (
-                        <GoogleMap
-                            mapContainerStyle={containerStyle}
-                            center={geo}
-                            zoom={14}
-                            options={options}
-                            onClick={(event) => {
-                                setMarker({
-                                    lat: event.latLng.lat(),
-                                    lng: event.latLng.lng(),
-                                });
-                            }}
-                        >
-                            <Marker position={geo && marker} />
-                        </GoogleMap>
-                    )}
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button
-                        onClick={() => {
-                            dispatch(setGeo(marker));
-                            props.onHide();
-                            fillForm(marker);
+        <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Choose Your Address
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                {true && (
+                    <GoogleMap
+                        mapContainerStyle={containerStyle}
+                        center={geo}
+                        zoom={14}
+                        options={options}
+                        onClick={(event) => {
+                            setMarker({
+                                lat: event.latLng.lat(),
+                                lng: event.latLng.lng(),
+                            });
                         }}
                     >
-                        Submit
-                    </Button>
-                    <Button
-                        variant="secondary"
-                        onClick={() => {
-                            props.onHide();
-                        }}
-                    >
-                        Close
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        </>
+                        <Marker position={geo && marker} />
+                    </GoogleMap>
+                )}
+            </Modal.Body>
+            <Modal.Footer>
+                <Button
+                    onClick={() => {
+                        dispatch(setGeo(marker));
+                        props.onHide();
+                        fillForm(marker);
+                    }}
+                >
+                    Submit
+                </Button>
+                <Button
+                    variant="secondary"
+                    onClick={() => {
+                        props.onHide();
+                    }}
+                >
+                    Close
+                </Button>
+            </Modal.Footer>
+        </Modal>
     );
 };
 

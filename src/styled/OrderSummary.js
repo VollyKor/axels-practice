@@ -1,20 +1,24 @@
 import styled from 'styled-components';
 import Image from 'react-bootstrap/Image';
 
+import { Wrapper } from './utils';
+
 import Img from '../images/image-not-found.jpg';
 
-const ProductName = styled.h2`
+export const ProductName = styled.h2`
     margin-bottom: 2px;
     color: var(--text-accent-color);
     font-size: 0.8rem;
 `;
-const ProductDescr = styled.p`
+
+export const ProductDescr = styled.p`
     margin-bottom: 0;
     color: var(--black-color);
 
     font-size: 0.65rem;
 `;
-const ProductQn = styled(ProductDescr)``;
+
+export const ProductQn = styled(ProductDescr)``;
 
 export const ProductPrice = styled.p`
     margin-left: auto;
@@ -22,20 +26,22 @@ export const ProductPrice = styled.p`
     color: #757575;
 `;
 
+export const ProductsContainer = styled.div``;
+
 export const ProductInfo = ({
     name = 'unknown',
     color = 'default',
     quantity = 1,
 }) => (
-    <div className="p-1">
+    <ProductsContainer className="p-1">
         <ProductName className="h6">{name}</ProductName>
         <ProductDescr>{color}</ProductDescr>
         <ProductQn>Quantity {quantity}</ProductQn>
-    </div>
+    </ProductsContainer>
 );
 
 export const ProductImg = ({ img }) => (
-    <div className="wrapper">
+    <Wrapper className="wrapper">
         <Image
             src={Img}
             alt=""
@@ -44,5 +50,5 @@ export const ProductImg = ({ img }) => (
             className="p-1"
             rounded
         />
-    </div>
+    </Wrapper>
 );

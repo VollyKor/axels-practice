@@ -17,3 +17,5 @@ export const HalfTransparentWrapper = styled.div`
     background-color: rgba(255, 255, 255, 0.5);
     z-index: 1;
 `;
+
+export const Wrapper = styled.div``;
