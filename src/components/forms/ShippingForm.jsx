@@ -1,14 +1,14 @@
-import { useRef, useEffect, useState, useMemo } from 'react';
+import { useRef, useMemo } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Form, Col } from 'react-bootstrap';
 import { useFormik } from 'formik';
-import { Tooltip } from 'components';
-import { usePlacesWidget } from 'react-google-autocomplete';
 import countryList from 'react-select-country-list';
 
-import { FormPhoneDesc, CityInput, SubmitButton } from 'styled/ShippingForm';
+import { CityInput, Tooltip } from 'components';
+
+import { FormPhoneDesc, SubmitButton } from 'styled/ShippingForm';
 
 import {
-    formType,
     initialShippingFormValues,
     fieldName,
     localStorageKey,
@@ -16,14 +16,7 @@ import {
 import getGeo from 'helpers/getGeo';
 import { shippingFormValidate } from 'helpers/validationSchemas';
 
-const { REACT_APP_GOOGLE_API_KEY } = process.env;
-
-export default function ShippingForm({ setCurrentForm }) {
-    const [geoposition, setGeoposition] = useState(null);
-    const [address, setAddress] = useState(null);
-
-    const options = useMemo(() => countryList().getData(), []);
-    console.log(options);
+export default function ShippingForm() {
     const fullNameRef = useRef(null);
     const phoneRef = useRef(null);
     const addressRef = useRef(null);
@@ -32,10 +25,14 @@ export default function ShippingForm({ setCurrentForm }) {
     const countryRef = useRef(null);
     const zipCodeRef = useRef(null);
 
+    const history = useHistory();
+
+    const countries = useMemo(() => countryList().getData(), []);
+
     const {
         handleSubmit,
-        setFieldValue,
         getFieldProps,
+        values,
         touched,
         errors,
         resetForm,
@@ -46,49 +43,24 @@ export default function ShippingForm({ setCurrentForm }) {
                 localStorageKey.shippingForm,
                 JSON.stringify(FormData)
             );
-            setCurrentForm(formType.Billing);
+
+            history.push('/cart/billing');
         },
         validationSchema: shippingFormValidate,
     });
 
-    const { ref } = usePlacesWidget({
-        apiKey: REACT_APP_GOOGLE_API_KEY,
-        options: {
-            types: ['(country)'],
-            componentRestrictions: { country: 'ua' },
-        },
-        onPlaceSelected: (place) => {
-            console.log(place);
-            setFieldValue(fieldName.country, place.formatted_address);
-        },
-    });
-
-    useEffect(() => {
-        if (!geoposition) {
-            navigator.geolocation.getCurrentPosition((position) =>
-                setGeoposition(position)
-            );
-        }
-
-        getGeo(geoposition, setAddress);
-    }, [geoposition]);
-
-    useEffect(() => {
-        if (address) {
-            resetForm({ values: { ...initialShippingFormValues, ...address } });
-        }
-    }, [address, resetForm]);
+    const fillForm = async (geo) => {
+        const address = await getGeo(geo);
+        resetForm({ values: { ...values, ...address } });
+    };
 
     const getWarningStyleBg = (field) =>
         errors[field] && touched[field] && 'bg-warning';
 
     return (
         <>
-            <h2 className="ml-4">Shipping Info</h2>
-            <Form className="p-4" onSubmit={handleSubmit}>
-                <Form.Group>
-                    <Form.Control ref={ref} />
-                </Form.Group>
+            <h2 className="ml-4 h4">Shipping Info</h2>
+            <Form className="px-4 pt-1 pb-5" onSubmit={handleSubmit}>
                 <Form.Label>Recipient</Form.Label>
 
                 <Form.Group>
@@ -172,6 +144,7 @@ export default function ShippingForm({ setCurrentForm }) {
 
                 <CityInput
                     inputRef={cityRef}
+                    fillForm={fillForm}
                     className={getWarningStyleBg(fieldName.city)}
                     {...getFieldProps(fieldName.city)}
                 />
@@ -193,7 +166,7 @@ export default function ShippingForm({ setCurrentForm }) {
                                 className={getWarningStyleBg(fieldName.country)}
                                 {...getFieldProps(fieldName.country)}
                             >
-                                {options.map((el) => (
+                                {countries.map((el) => (
                                     <option key={el.label}>{el.label}</option>
                                 ))}
                             </Form.Control>

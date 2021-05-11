@@ -36,10 +36,21 @@ const GlobalStyle = createGlobalStyle`
 
     font-family: Open-Sans, Helvetica, Sans-Serif;
     color: var(--main-text-color);
+
+    @media print {
+      background-color: white;
+    }
   }
 
   a {
     color: inherit
+    }
+
+.navlink{
+  color: var(--accent-text-color)
+}
+    .navlink.active{
+      color: var(----main-text-color);
     }
 `;
 

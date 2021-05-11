@@ -8,6 +8,9 @@ export { default as OrderSummary } from './OrderSummary';
 export { default as PriceCounter } from './PriceCounter';
 export { default as Tooltip } from './Tooltip';
 export { default as OrderData } from './OrderData';
+export { default as PrintPage } from './PrintPage';
+export { default as GoodleModal } from './GoodleModal';
+export { default as CityInput } from './CityInput';
 
 // Forms
 export { default as ShippingForm } from './forms/ShippingForm';

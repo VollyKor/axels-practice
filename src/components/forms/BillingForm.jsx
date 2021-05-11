@@ -1,19 +1,21 @@
 import { useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Form, Col, Row, Button } from 'react-bootstrap';
 import { useFormik } from 'formik';
 
-import { Tooltip } from 'components';
-import { CityInput, SubmitButton } from '../../styled/ShippingForm';
+import { Tooltip, CityInput } from 'components';
+import { SubmitButton } from '../../styled/ShippingForm';
 
 import {
-    formType,
     initialBillingFormValues,
     fieldName,
     localStorageKey,
 } from 'helpers/constants';
+
+import getGeo from 'helpers/getGeo';
 import { BillingFormValidate } from '../../helpers/validationSchemas';
 
-export default function BillingForm({ setCurrentForm }) {
+export default function BillingForm() {
     const fullNameRef = useRef(null);
     const emailRef = useRef(null);
     const addressRef = useRef(null);
@@ -22,24 +24,33 @@ export default function BillingForm({ setCurrentForm }) {
     const countryRef = useRef(null);
     const zipCodeRef = useRef(null);
 
+    const history = useHistory();
+
     const {
         handleSubmit,
         getFieldProps,
         touched,
         errors,
+        values,
         resetForm,
     } = useFormik({
         initialValues: initialBillingFormValues,
+
         onSubmit: (FormData) => {
             localStorage.setItem(
                 localStorageKey.billingForm,
                 JSON.stringify(FormData)
             );
 
-            setCurrentForm(formType.Payment);
+            history.push('/cart/payment');
         },
         validationSchema: BillingFormValidate,
     });
+
+    const fillForm = async (geo) => {
+        const address = await getGeo(geo);
+        resetForm({ values: { ...values, ...address } });
+    };
 
     const getWarningStyleBg = (field) =>
         errors[field] && touched[field] && 'bg-warning';
@@ -52,10 +63,10 @@ export default function BillingForm({ setCurrentForm }) {
 
     return (
         <>
-            <Row className="justify-content-between pt-3 px-3 mt-2 align-items-baseline">
-                <h2 className="ml-4">Billing Information</h2>
+            <Row className="justify-content-between px-3 align-items-baseline">
+                <h2 className="ml-4 h4">Billing Information</h2>
                 <Button className="text-muted bg-transparent border-0 p-0">
-                    <u className="p-0 h6 ml-4">
+                    <u className="p-0 h6 ml-1">
                         <small onClick={handleClick}>Same as Shipping</small>
                     </u>
                 </Button>
@@ -135,6 +146,7 @@ export default function BillingForm({ setCurrentForm }) {
                 </Form.Group>
 
                 <CityInput
+                    fillForm={fillForm}
                     inputRef={cityRef}
                     className={getWarningStyleBg(fieldName.city)}
                     {...getFieldProps(fieldName.city)}

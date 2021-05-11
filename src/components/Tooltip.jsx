@@ -17,6 +17,6 @@ export default function Tooltip({
             </Popover>
         </Overlay>
     ) : (
-        'Error, Some props are missing fro Tooltip'
+        'Error, Some props are missing from Tooltip'
     );
 }

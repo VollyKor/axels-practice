@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import qs from 'query-string';
 
 import { getOrderDataFromLS } from 'helpers/localStorage';
 import { POST_ORDER } from '../redux/saga';
@@ -14,6 +16,8 @@ export default function OrderData() {
         const orderData = getOrderDataFromLS();
         dispatch(POST_ORDER(orderData));
     }, [dispatch]);
+
+    const string = qs.stringify({ orderId, contactEmail, deliveryDate });
 
     return (
         <div className="p-4 mt-5">
@@ -34,9 +38,13 @@ export default function OrderData() {
 
             <small>
                 <u>
-                    <a href="/" className="font-weight-bold ">
+                    <Link
+                        to={`/print?${string}`}
+                        className="font-weight-bold"
+                        target="blanc"
+                    >
                         Print recipe
-                    </a>
+                    </Link>
                 </u>
             </small>
         </div>
