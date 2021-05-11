@@ -2,11 +2,11 @@ import { useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, Col } from 'react-bootstrap';
 import { useFormik } from 'formik';
+import { BiLockAlt } from 'react-icons/bi';
 
 import { Tooltip } from 'components';
 import { SubmitButton } from '../../styled/ShippingForm';
 import { CheckIcon } from '../../styled/PaymentForm';
-import { BiLockAlt } from 'react-icons/bi';
 
 import {
     initialPaymentFormValues,

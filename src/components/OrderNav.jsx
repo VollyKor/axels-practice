@@ -1,35 +1,33 @@
-import { useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { IoIosArrowForward } from 'react-icons/io';
 
 export default function OrderNav() {
-    const { pathname } = useLocation();
-
     return (
         <div className="p-4 ">
-            <span
-                className={`navlink mr-2 ${
-                    pathname === '/cart/shipping' && 'active'
-                }`}
+            <NavLink
+                to="/cart/shipping"
+                className="navlink mr-2"
+                activeClassName="active"
             >
                 Shipping
-            </span>
+            </NavLink>
             <IoIosArrowForward className="mr-2" size="30px" color="#808181" />
-            <span
-                className={`navlink mr-2 ${
-                    pathname === '/cart/billing' && 'active'
-                }`}
+            <NavLink
+                to="/cart/billing"
+                className="navlink mr-2"
+                activeClassName="active"
             >
                 Billing
-            </span>
+            </NavLink>
             <IoIosArrowForward className="mr-2" size="30px" color="#808181" />
-            <span
-                className={`navlink mr-2 ${
-                    pathname === '/cart/payment' && 'active'
-                }`}
+            <NavLink
+                to="/cart/payment"
+                className="navlink mr-2"
+                activeClassName="active"
             >
                 Payment
-            </span>
+            </NavLink>
         </div>
     );
 }

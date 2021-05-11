@@ -1,11 +1,7 @@
 import { useRef, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
-// import { usePlacesWidget } from 'react-google-autocomplete';
 import { Form, Col } from 'react-bootstrap';
 import { useFormik } from 'formik';
-
-// import CountrySelect from 'react-bootstrap-country-select';
-// import Select from 'react-select';
 import countryList from 'react-select-country-list';
 
 import { CityInput, Tooltip } from 'components';

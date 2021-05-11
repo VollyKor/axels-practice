@@ -18,7 +18,7 @@ function App() {
                 <Route path="/">
                     <Navbar />
                     <Route path="/" exact>
-                        <Container className="p-3"></Container>
+                        <Container className="p-3" />
                     </Route>
                     <Route path="/cart">
                         <Cart />
