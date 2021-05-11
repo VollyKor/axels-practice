@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import { RiCheckboxCircleFill } from 'react-icons/ri';
 
 export const CheckIcon = styled(RiCheckboxCircleFill)`
