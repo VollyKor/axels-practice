@@ -1,10 +1,12 @@
-import { useRef } from 'react';
+import { useRef, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, Col, Row, Button } from 'react-bootstrap';
 import { useFormik } from 'formik';
 
 import { Tooltip, CityInput } from 'components';
 import { SubmitButton } from '../../styled/ShippingForm';
+
+import countryList from 'react-select-country-list';
 
 import {
     initialBillingFormValues,
@@ -26,26 +28,22 @@ export default function BillingForm() {
 
     const history = useHistory();
 
-    const {
-        handleSubmit,
-        getFieldProps,
-        touched,
-        errors,
-        values,
-        resetForm,
-    } = useFormik({
-        initialValues: initialBillingFormValues,
+    const countries = useMemo(() => countryList().getData(), []);
 
-        onSubmit: (FormData) => {
-            localStorage.setItem(
-                localStorageKey.billingForm,
-                JSON.stringify(FormData)
-            );
+    const { handleSubmit, getFieldProps, touched, errors, values, resetForm } =
+        useFormik({
+            initialValues: initialBillingFormValues,
 
-            history.push('/cart/payment');
-        },
-        validationSchema: BillingFormValidate,
-    });
+            onSubmit: (FormData) => {
+                localStorage.setItem(
+                    localStorageKey.billingForm,
+                    JSON.stringify(FormData)
+                );
+
+                history.push('/cart/payment');
+            },
+            validationSchema: BillingFormValidate,
+        });
 
     const fillForm = async (geo) => {
         const address = await getGeo(geo);
@@ -163,12 +161,18 @@ export default function BillingForm() {
                     <Col lg={7}>
                         <Form.Group>
                             <Form.Control
+                                as="select"
                                 type="text"
-                                placeholder="Country"
                                 ref={countryRef}
+                                placeholder="Country"
                                 className={getWarningStyleBg(fieldName.country)}
                                 {...getFieldProps(fieldName.country)}
-                            />
+                            >
+                                <option>{''}</option>
+                                {countries.map((el) => (
+                                    <option key={el.label}>{el.label}</option>
+                                ))}
+                            </Form.Control>
 
                             <Tooltip
                                 fieldName={fieldName.country}

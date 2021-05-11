@@ -1,11 +1,14 @@
 import { useRef, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
+// import { usePlacesWidget } from 'react-google-autocomplete';
 import { Form, Col } from 'react-bootstrap';
 import { useFormik } from 'formik';
+
+// import CountrySelect from 'react-bootstrap-country-select';
+// import Select from 'react-select';
 import countryList from 'react-select-country-list';
 
 import { CityInput, Tooltip } from 'components';
-
 import { FormPhoneDesc, SubmitButton } from 'styled/ShippingForm';
 
 import {
@@ -29,25 +32,19 @@ export default function ShippingForm() {
 
     const countries = useMemo(() => countryList().getData(), []);
 
-    const {
-        handleSubmit,
-        getFieldProps,
-        values,
-        touched,
-        errors,
-        resetForm,
-    } = useFormik({
-        initialValues: initialShippingFormValues,
-        onSubmit: (FormData) => {
-            localStorage.setItem(
-                localStorageKey.shippingForm,
-                JSON.stringify(FormData)
-            );
+    const { handleSubmit, getFieldProps, values, touched, errors, resetForm } =
+        useFormik({
+            initialValues: initialShippingFormValues,
+            onSubmit: (FormData) => {
+                localStorage.setItem(
+                    localStorageKey.shippingForm,
+                    JSON.stringify(FormData)
+                );
 
-            history.push('/cart/billing');
-        },
-        validationSchema: shippingFormValidate,
-    });
+                history.push('/cart/billing');
+            },
+            validationSchema: shippingFormValidate,
+        });
 
     const fillForm = async (geo) => {
         const address = await getGeo(geo);
@@ -56,6 +53,11 @@ export default function ShippingForm() {
 
     const getWarningStyleBg = (field) =>
         errors[field] && touched[field] && 'bg-warning';
+
+    // const { ref: bootstrapRef } = usePlacesWidget({
+    //     apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+    //     onPlaceSelected: (place) => console.log(place),
+    // });
 
     return (
         <>
@@ -157,6 +159,9 @@ export default function ShippingForm() {
 
                 <Form.Row>
                     <Col lg={7}>
+                        {/* <Form.Group controlId="formBasicEmail">
+                            <Form.Control type="text" ref={bootstrapRef} />
+                        </Form.Group> */}
                         <Form.Group>
                             <Form.Control
                                 as="select"
@@ -166,6 +171,7 @@ export default function ShippingForm() {
                                 className={getWarningStyleBg(fieldName.country)}
                                 {...getFieldProps(fieldName.country)}
                             >
+                                <option>{''}</option>
                                 {countries.map((el) => (
                                     <option key={el.label}>{el.label}</option>
                                 ))}

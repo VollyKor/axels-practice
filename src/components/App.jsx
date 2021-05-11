@@ -2,8 +2,9 @@ import Container from 'react-bootstrap/Container';
 import { Switch, Route } from 'react-router-dom';
 
 import { Cart, Navbar } from 'components';
-import GlobalStyles from '../styled/globalStyles';
 import PrintPage from './PrintPage';
+
+import GlobalStyles from '../styled/globalStyles';
 
 function App() {
     return (
