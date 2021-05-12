@@ -12,12 +12,6 @@ export const NavWrapper = styled.div`
 
 export const Link = styled(NavLink)`
     display: block;
-
-    /* margin-bottom: 20px;
-
-    @media ${(props) => props.theme?.deviceSize?.medium} {
-        margin-bottom: 0;
-    } */
 `;
 
 export const Icon = styled(IoIosArrowForward)`
