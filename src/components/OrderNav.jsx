@@ -1,16 +1,31 @@
-import { IoIosArrowForward } from "react-icons/io";
+import { NavWrapper, Link, Icon } from '../styled/OrderNav';
 
-export default function OrderNav() {
-  // maybe BreadCrumb
-  return (
-    <>
-      <div className="p-4 ">
-        <span className="mr-2">Shipping</span>
-        <IoIosArrowForward className="mr-2" size="30px" />
-        <span>Billing</span>
-        <IoIosArrowForward className="mr-2" size="30px" />
-        <span>Payment</span>
-      </div>
-    </>
-  );
-}
+const OrderNav = () => (
+    <NavWrapper className="p-4">
+        <Link
+            to="/cart/shipping"
+            className="navlink mr-2"
+            activeClassName="active"
+        >
+            Shipping
+        </Link>
+        <Icon className="mr-2" size="30px" color="#808181" />
+        <Link
+            to="/cart/billing"
+            className="navlink mr-2"
+            activeClassName="active"
+        >
+            Billing
+        </Link>
+        <Icon className="mr-2" size="30px" color="#808181" />
+        <Link
+            to="/cart/payment"
+            className="navlink mr-2"
+            activeClassName="active"
+        >
+            Payment
+        </Link>
+    </NavWrapper>
+);
+
+export default OrderNav;

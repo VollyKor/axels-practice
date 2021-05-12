@@ -1,26 +1,32 @@
-import Container from "react-bootstrap/Container";
-import MainPage from "./MainPage/MainPage";
-import { Switch, Route } from "react-router-dom";
+import Container from 'react-bootstrap/Container';
+import { Switch, Route } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 
-import Navbar from "./Navbar/Navbar";
-import Cart from "./Cart/Cart";
+import { Cart, Navbar } from 'components';
+import PrintPage from './PrintPage';
 
-function App() {
-  return (
-    <>
-      <Navbar />
-      <Switch>
-        <Route path="/" exact>
-          <Container className="p-3">
-            <MainPage />
-          </Container>
-        </Route>
-        <Route path="/cart">
-          <Cart />
-        </Route>
-      </Switch>
-    </>
-  );
-}
+import GlobalStyles from '../styled/utils/globalStyles';
+import theme from '../styled/utils/themeStyles';
+
+const App = () => (
+    <ThemeProvider theme={theme}>
+        <GlobalStyles />
+
+        <Switch>
+            <Route path="/print" exact>
+                <PrintPage />
+            </Route>
+            <Route path="/">
+                <Navbar />
+                <Route path="/" exact>
+                    <Container className="p-3" />
+                </Route>
+                <Route path="/cart">
+                    <Cart />
+                </Route>
+            </Route>
+        </Switch>
+    </ThemeProvider>
+);
 
 export default App;
