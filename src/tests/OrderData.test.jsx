@@ -1,44 +1,44 @@
 import React from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
-import { act } from 'react-dom/test-utils';
+import { Provider } from 'react-redux';
+import { mount } from 'enzyme';
+import configureMockStore from 'redux-mock-store';
+import { MemoryRouter } from 'react-router-dom';
 
 import OrderData from 'components/OrderData';
 
-let container = null;
-beforeEach(() => {
-    container = document.createElement('div');
-    document.body.appendChild(container);
+import createSagaMiddleware from 'redux-saga';
+
+const sagaMiddleware = createSagaMiddleware();
+const mockStore = configureMockStore([sagaMiddleware]);
+
+const store = mockStore({
+    order: {
+        orderId: '123',
+        contactEmail: '',
+        deliveryDate: '',
+    },
+    startup: { complete: false },
 });
 
-afterEach(() => {
-    unmountComponentAtNode(container);
-    container.remove();
-    container = null;
-});
-
-it('renders order data', async () => {
-    const fakeData = {
-        orderId: '13123',
-        contactEmail: 'test@email.com',
-        deliveryDate: '12 June 2021',
-    };
-
-    jest.spyOn(global, 'fetch').mockImplementation(() =>
-        Promise.resolve({
-            json: () => Promise.resolve(fakeData),
-        })
+const getWrapper = () =>
+    mount(
+        <Provider store={store}>
+            <MemoryRouter>
+                <OrderData />
+            </MemoryRouter>
+        </Provider>
     );
 
-    // Используем act асинхронно, чтобы передать успешно завершённые промисы
-    await act(async () => {
-        render(<OrderData />, container);
+describe('OrderData testing', () => {
+    it('renders correctly', () => {
+        const wrapper = getWrapper();
+        expect(wrapper).toMatchSnapshot();
     });
 
-    expect(container.querySelector('p').textContent).toBe(fakeData.orderId);
-    expect(container.querySelector('a').textContent).toBe(
-        fakeData.contactEmail
-    );
-    expect(container.textContent).toContain(fakeData.deliveryDate);
-
-    global.fetch.mockRestore();
+    // it('should render a startup component if startup is not complete', () => {
+    //     const wrapper = getWrapper();
+    //     expect(wrapper.find('p.font-weight-bold').text()).toIncludeText(
+    //         '123'
+    //     );
+    // });
 });

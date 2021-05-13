@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Container
+  className="mb-5"
+  fluid={false}
+>
+  <Row
+    noGutters={false}
+  >
+    <Col
+      className="mx-auto"
+    >
+      <Styled(C_Navbar)>
+        <Styled(C_NavBarLink)
+          to="/"
+        >
+          <styled.span
+            className="mr-1"
+          >
+            &lt;/&gt;
+          </styled.span>
+          <Styled(styled.span)
+            className="h5"
+          >
+            Front-end Developer Test Task
+          </Styled(styled.span)>
+        </Styled(C_NavBarLink)>
+        <Styled(C_NavBarLink)
+          to="/cart/shipping"
+        >
+          <CartLink />
+        </Styled(C_NavBarLink)>
+      </Styled(C_Navbar)>
+    </Col>
+  </Row>
+</Container>
+`;

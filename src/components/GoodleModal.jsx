@@ -56,22 +56,20 @@ const GoogleModal = ({ fillForm, ...props }) => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {true && (
-                    <GoogleMap
-                        mapContainerStyle={containerStyle}
-                        center={geo}
-                        zoom={14}
-                        options={options}
-                        onClick={(event) => {
-                            setMarker({
-                                lat: event.latLng.lat(),
-                                lng: event.latLng.lng(),
-                            });
-                        }}
-                    >
-                        <Marker position={geo && marker} />
-                    </GoogleMap>
-                )}
+                <GoogleMap
+                    mapContainerStyle={containerStyle}
+                    center={geo}
+                    zoom={14}
+                    options={options}
+                    onClick={(event) => {
+                        setMarker({
+                            lat: event.latLng.lat(),
+                            lng: event.latLng.lng(),
+                        });
+                    }}
+                >
+                    <Marker position={geo && marker} />
+                </GoogleMap>
             </Modal.Body>
             <Modal.Footer>
                 <Button

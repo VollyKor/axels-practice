@@ -9,7 +9,7 @@ import {
     Conditions,
 } from '../styled/PriceCounter';
 
-const PriceCounter = () => (
+const PriceCounter = ({ price = 12.12 }) => (
     <>
         <ListGroupItem className="mb-3 px-0 bg-transparent">
             <Item>
@@ -24,7 +24,7 @@ const PriceCounter = () => (
 
             <Item>
                 <Title>Taxes</Title>
-                <Price> ${12.12}</Price>
+                <Price>{price}</Price>
             </Item>
         </ListGroupItem>
 

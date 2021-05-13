@@ -1,33 +1,16 @@
-import React from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
-import { act } from 'react-dom/test-utils';
+import { shallow } from 'enzyme';
+
 import PriceCounter from 'components/PriceCounter';
 
-let container = null;
-beforeEach(() => {
-    container = document.createElement('div');
-    document.body.appendChild(container);
+it('renders correctly', () => {
+    const wrapper = shallow(<PriceCounter price={20} />);
+
+    expect(wrapper).toMatchSnapshot();
 });
 
-afterEach(() => {
-    unmountComponentAtNode(container);
-    container.remove();
-    container = null;
-});
-
-it('renders with or without a name', () => {
-    act(() => {
-        render(<PriceCounter />, container);
-    });
-    expect(container.textContent).toBe('Hey, stranger');
-
-    act(() => {
-        render(<PriceCounter name="Jenny" />, container);
-    });
-    expect(container.textContent).toBe('Hello, Jenny!');
-
-    act(() => {
-        render(<PriceCounter name="Margaret" />, container);
-    });
-    expect(container.textContent).toBe('Hello, Margaret!');
+it('render props correctly', () => {
+    const price = 20;
+    const wrapper = shallow(<PriceCounter price={price} />);
+    const text = wrapper.text();
+    expect(text).toContain(`Taxes${price}`);
 });
