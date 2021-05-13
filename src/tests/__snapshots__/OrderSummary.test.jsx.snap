@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderSummary test renders correctly with data 1`] = `
+<Fragment>
+  <Row
+    className="justify-content-between pt-3 px-3 mt-2 align-items-baseline"
+    noGutters={false}
+  >
+    <h2
+      className="h6"
+    >
+      OrderSummary
+    </h2>
+    <withRouter(LinkContainer)
+      to="/"
+    >
+      <NavLink
+        as={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          }
+        }
+        className="text-muted"
+        disabled={false}
+      >
+        <small>
+          <u>
+            edit order
+          </u>
+        </small>
+      </NavLink>
+    </withRouter(LinkContainer)>
+  </Row>
+  <ListGroup
+    className="list-group-flush"
+  >
+    <ListGroupItem
+      active={false}
+      className="border-top-3 p-2 pb-0 bg-transparent"
+      disabled={false}
+      key="132"
+    >
+      <Row
+        noGutters={false}
+      >
+        <ProductImg
+          img="https://pixabay.com/get/ge03278b9a4415afdfb3ba98ea3cc26558521c9ce7aa1419845348408127266ac67a221725aeba0c54f87bceabeb31eeb_640.jpg"
+        />
+        <ProductInfo
+          color="black"
+          name="Boots"
+          quantity={1}
+        />
+        <styled.p>
+          $
+          100
+        </styled.p>
+      </Row>
+    </ListGroupItem>
+    <ListGroupItem
+      active={false}
+      className="border-top-3 p-2 pb-0 bg-transparent"
+      disabled={false}
+      key="146"
+    >
+      <Row
+        noGutters={false}
+      >
+        <ProductImg
+          img="https://pixabay.com/get/gf81b65afdc147703108c5b13db7759cc83582cdea7686ad840e67be5d06b4d3590400a8ccdfcd979caca9bc3bf9ac62a_640.jpg"
+        />
+        <ProductInfo
+          color="brown"
+          name="Shoes"
+          quantity={1}
+        />
+        <styled.p>
+          $
+          130
+        </styled.p>
+      </Row>
+    </ListGroupItem>
+    <ListGroupItem
+      active={false}
+      className="border-top-3 p-2 pb-0 bg-transparent"
+      disabled={false}
+      key="173"
+    >
+      <Row
+        noGutters={false}
+      >
+        <ProductImg
+          img="https://pixabay.com/get/gbb7487e68df5a961adbe74bd167fcd7bf2e17cfb92ff2835becb7c6351bf37b04779e04238b805d9efa2b5a32fc6e076_640.jpg"
+        />
+        <ProductInfo
+          color="gold"
+          name="Sandals"
+          quantity={1}
+        />
+        <styled.p>
+          $
+          70
+        </styled.p>
+      </Row>
+    </ListGroupItem>
+    <PriceCounter />
+  </ListGroup>
+</Fragment>
+`;

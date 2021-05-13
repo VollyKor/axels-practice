@@ -1,3 +1,81 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test suite renders correctly 1`] = `"Google Map Loading"`;
+exports[`Google map test renders after Loading 1`] = `
+<Modal
+  animation={true}
+  aria-labelledby="contained-modal-title-vcenter"
+  autoFocus={true}
+  backdrop={true}
+  centered={true}
+  dialogAs={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "render": [Function],
+    }
+  }
+  enforceFocus={true}
+  keyboard={true}
+  restoreFocus={true}
+  show={false}
+  size="lg"
+>
+  <ModalHeader
+    closeButton={true}
+    closeLabel="Close"
+  >
+    <ModalTitle
+      id="contained-modal-title-vcenter"
+    >
+      Choose Your Address
+    </ModalTitle>
+  </ModalHeader>
+  <ModalBody>
+    <GoogleMap
+      center={
+        Object {
+          "lat": 21,
+          "lng": 32,
+        }
+      }
+      mapContainerStyle={
+        Object {
+          "height": "100%",
+          "minHeight": "300px",
+          "minWidth": "200px",
+          "width": "100%",
+        }
+      }
+      onClick={[Function]}
+      options={
+        Object {
+          "disableDefaultUI": true,
+          "zoomControl": true,
+        }
+      }
+      zoom={14}
+    >
+      <Marker
+        position={[Function]}
+      />
+    </GoogleMap>
+  </ModalBody>
+  <ModalFooter>
+    <Button
+      active={false}
+      disabled={false}
+      onClick={[Function]}
+      variant="primary"
+    >
+      Submit
+    </Button>
+    <Button
+      active={false}
+      disabled={false}
+      onClick={[Function]}
+      variant="secondary"
+    >
+      Close
+    </Button>
+  </ModalFooter>
+</Modal>
+`;

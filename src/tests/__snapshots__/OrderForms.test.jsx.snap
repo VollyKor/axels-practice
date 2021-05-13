@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+Array [
+  <div
+    className="sc-crHlIS gWInHI p-4"
+  >
+    <a
+      aria-current={null}
+      className="sc-egiSv SwPzC navlink mr-2"
+      href="/cart/shipping"
+      onClick={[Function]}
+    >
+      Shipping
+    </a>
+    <svg
+      className="sc-bqiQRQ bFHbwj mr-2"
+      color="#808181"
+      fill="currentColor"
+      height="30px"
+      stroke="currentColor"
+      strokeWidth="0"
+      style={
+        Object {
+          "color": "#808181",
+        }
+      }
+      viewBox="0 0 512 512"
+      width="30px"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M294.1 256L167 129c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.3 34 0L345 239c9.1 9.1 9.3 23.7.7 33.1L201.1 417c-4.7 4.7-10.9 7-17 7s-12.3-2.3-17-7c-9.4-9.4-9.4-24.6 0-33.9l127-127.1z"
+        key="0"
+      />
+    </svg>
+    <a
+      aria-current={null}
+      className="sc-egiSv SwPzC navlink mr-2"
+      href="/cart/billing"
+      onClick={[Function]}
+    >
+      Billing
+    </a>
+    <svg
+      className="sc-bqiQRQ bFHbwj mr-2"
+      color="#808181"
+      fill="currentColor"
+      height="30px"
+      stroke="currentColor"
+      strokeWidth="0"
+      style={
+        Object {
+          "color": "#808181",
+        }
+      }
+      viewBox="0 0 512 512"
+      width="30px"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M294.1 256L167 129c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.3 34 0L345 239c9.1 9.1 9.3 23.7.7 33.1L201.1 417c-4.7 4.7-10.9 7-17 7s-12.3-2.3-17-7c-9.4-9.4-9.4-24.6 0-33.9l127-127.1z"
+        key="0"
+      />
+    </svg>
+    <a
+      aria-current={null}
+      className="sc-egiSv SwPzC navlink mr-2"
+      href="/cart/payment"
+      onClick={[Function]}
+    >
+      Payment
+    </a>
+  </div>,
+  "",
+  "",
+  "",
+  "",
+]
+`;

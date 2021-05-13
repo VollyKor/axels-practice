@@ -13,6 +13,7 @@ exports[`OrderData testing renders correctly 1`] = `
     className="font-weight-bold text-dark mb-2"
   >
     Order number is: 
+    123
   </p>
   <p
     className="h6 mb-3"
@@ -41,7 +42,7 @@ exports[`OrderData testing renders correctly 1`] = `
     <u>
       <a
         className="font-weight-bold"
-        href="/print?contactEmail=&deliveryDate=&orderId="
+        href="/print?contactEmail=&deliveryDate=&orderId=123"
         onClick={[Function]}
         target="blanc"
       >

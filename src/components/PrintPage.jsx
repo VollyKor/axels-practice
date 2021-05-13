@@ -15,7 +15,7 @@ export default function PrintPage() {
                     <h4 className="mb-4 text-center">
                         Thank you for your order!
                     </h4>
-                    <p className="font-weight-bold text-dark mb-2">
+                    <p id="orderId" className="font-weight-bold text-dark mb-2">
                         Order number is: {orderId}
                     </p>
                     <p className="h6 mb-3">

@@ -1,10 +1,18 @@
 import { shallow } from 'enzyme';
 import * as redux from 'react-redux';
 import { GoogleMap } from '@react-google-maps/api';
+import { cleanup } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 
 import GoodleModal from 'components/GoodleModal';
 
-describe('test suite', () => {
+const mockSetState = jest.fn();
+jest.mock('react', () => ({
+    ...jest.requireActual('react'),
+    useState: (initial) => [initial, mockSetState],
+}));
+
+describe('Google map test', () => {
     let spyOnUseSelector;
     let spyOnUseDispatch;
     let mockDispatch;
@@ -12,31 +20,35 @@ describe('test suite', () => {
     const ititialCoords = { lat: 21, lng: 32 };
 
     beforeEach(() => {
-        // Mock useSelector hook
         spyOnUseSelector = jest.spyOn(redux, 'useSelector');
         spyOnUseSelector.mockReturnValue({
             lat: 21,
             lng: 32,
         });
 
-        // Mock useDispatch hook
         spyOnUseDispatch = jest.spyOn(redux, 'useDispatch');
-        // Mock dispatch function returned from useDispatch
         mockDispatch = jest.fn();
         spyOnUseDispatch.mockReturnValue(mockDispatch);
     });
 
     afterEach(() => {
         jest.restoreAllMocks();
+        cleanup();
     });
 
     it('should render', () => {
-        const wrapper = shallow(<GoodleModal />);
+        const wrapper = shallow(<GoodleModal />, {
+            wrappingComponent: MemoryRouter,
+        });
         expect(wrapper.exists()).toBe(true);
     });
 
-    it('renders correctly', () => {
-        const wrapper = shallow(<GoodleModal />);
+    it('renders after Loading', async () => {
+        const wrapper = shallow(<GoodleModal />, {
+            wrappingComponent: MemoryRouter,
+        });
+
+        await Promise.resolve();
         expect(wrapper).toMatchSnapshot();
     });
 

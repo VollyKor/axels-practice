@@ -34,14 +34,13 @@ const GoogleModal = ({ fillForm, ...props }) => {
         setMarker({ ...geo });
     }, [dispatch, geo]);
 
-    const { isLoaded, loadError } = useLoadScript({
+    const { loadError } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
         libraries,
         language: 'en',
     });
 
     if (loadError) return 'Google Map Error';
-    if (!isLoaded) return 'Google Map Loading';
 
     return (
         <Modal

@@ -10,6 +10,7 @@ export default function OrderData() {
     const { orderId, contactEmail, deliveryDate } = useSelector(
         (state) => state.order
     );
+
     const dispatch = useDispatch();
 
     useEffect(() => {
