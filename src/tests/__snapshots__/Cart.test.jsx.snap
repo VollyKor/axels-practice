@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Container
+  fluid={false}
+>
+  <Col
+    className="mx-auto"
+    lg={9}
+  >
+    <Styled(Row)
+      className="mx-auto bg-white shadow rounded"
+    >
+      <Col
+        className="px-4"
+        lg={7}
+      >
+        <Route
+          path="/cart"
+        >
+          <OrderForms />
+        </Route>
+      </Col>
+      <Col
+        className="position-relative bg-light rounded"
+        lg={5}
+      >
+        <OrderSummary />
+        <Route
+          path="/cart/success"
+        >
+          <styled.div />
+        </Route>
+      </Col>
+    </Styled(Row)>
+  </Col>
+</Container>
+`;

@@ -25,12 +25,8 @@ export default function CityInput({
                 />
             </Form.Group>
 
-            <FindButton type="button">
-                <BiTargetLock
-                    size="25px"
-                    color="#5a1094"
-                    onClick={() => setShow(!show)}
-                />
+            <FindButton type="button" onClick={() => setShow(!show)}>
+                <BiTargetLock size="25px" color="#5a1094" />
             </FindButton>
 
             <GoogleModal

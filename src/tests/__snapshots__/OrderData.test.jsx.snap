@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderData testing renders correctly 1`] = `
+<div
+  className="p-4 mt-5"
+>
+  <h4
+    className="mb-4"
+  >
+    Thank you for your order!
+  </h4>
+  <p
+    className="font-weight-bold text-dark mb-2"
+  >
+    Order number is: 
+  </p>
+  <p
+    className="h6 mb-3"
+  >
+    <span
+      className="text-dark"
+    >
+      You will recieve an email confirmation shortly to 
+    </span>
+    <u>
+      <a
+        href="mailto:"
+        type="email"
+      />
+    </u>
+  </p>
+  <p
+    className="text-dark mb-0"
+  >
+    Estimated delivery Day is 
+  </p>
+  <p
+    className="font-weight-bold text-dark"
+  />
+  <small>
+    <u>
+      <a
+        className="font-weight-bold"
+        href="/print?contactEmail=&deliveryDate=&orderId="
+        onClick={[Function]}
+        target="blanc"
+      >
+        Print recipe
+      </a>
+    </u>
+  </small>
+</div>
+`;
