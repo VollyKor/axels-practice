@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 
 import { setGeo } from '../redux/ducks/geo';
 
-const containerStyle = {
+const GoogleMapsStyles = {
     width: '100%',
     height: '100%',
 
@@ -55,9 +55,10 @@ const GoogleModal = ({ fillForm, ...props }) => {
                     Choose Your Address
                 </Modal.Title>
             </Modal.Header>
+
             <Modal.Body>
                 <GoogleMap
-                    mapContainerStyle={containerStyle}
+                    mapContainerStyle={GoogleMapsStyles}
                     center={geo}
                     zoom={14}
                     options={options}
@@ -71,6 +72,7 @@ const GoogleModal = ({ fillForm, ...props }) => {
                     <Marker position={geo && marker} />
                 </GoogleMap>
             </Modal.Body>
+
             <Modal.Footer>
                 <Button
                     onClick={() => {
