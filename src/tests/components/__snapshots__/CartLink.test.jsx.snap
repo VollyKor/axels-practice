@@ -1,25 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
-<styled.div>
-  <styled.span
-    className="mr-1"
-  >
-    cart
-  </styled.span>
-  <IoCartOutline
-    size="25px"
-  />
-  <styled.div
-    className=" d-flex justify-content-center align-items-center"
-  >
-    <span>
-      3
-    </span>
-  </styled.div>
-</styled.div>
-`;
-
 exports[`renders snapshot 1`] = `
 <styled.div>
   <styled.span

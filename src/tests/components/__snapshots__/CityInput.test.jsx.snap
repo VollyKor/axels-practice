@@ -1,35 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
-<div
-  className="position-relative"
->
-  <FormGroup
-    className="position-relative"
-    controlId="city"
-  >
-    <FormControl
-      placeholder="City"
-      type="text"
-      value=""
-    />
-  </FormGroup>
-  <styled.button
-    onClick={[Function]}
-    type="button"
-  >
-    <BiTargetLock
-      color="#5a1094"
-      size="25px"
-    />
-  </styled.button>
-  <GoogleModal
-    onHide={[Function]}
-    show={false}
-  />
-</div>
-`;
-
 exports[`renders snapshot 1`] = `
 <div
   className="position-relative"

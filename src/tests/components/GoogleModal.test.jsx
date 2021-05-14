@@ -22,8 +22,8 @@ describe('Google map test', () => {
     beforeEach(() => {
         spyOnUseSelector = jest.spyOn(redux, 'useSelector');
         spyOnUseSelector.mockReturnValue({
-            lat: 21,
-            lng: 32,
+            lat: 11,
+            lng: 33,
         });
 
         spyOnUseDispatch = jest.spyOn(redux, 'useDispatch');
@@ -36,7 +36,7 @@ describe('Google map test', () => {
         cleanup();
     });
 
-    it('should render', () => {
+    it('should render itself', () => {
         const wrapper = shallow(<GoodleModal />, {
             wrappingComponent: MemoryRouter,
         });
@@ -61,5 +61,40 @@ describe('Google map test', () => {
 
             expect(map.prop('center')).toEqual(ititialCoords);
         });
+    });
+
+    it('closed on click Close', () => {
+        let isVisible = true;
+        const wrapper = shallow(
+            <GoodleModal
+                onHide={() => (isVisible = !isVisible)}
+                fillForm={(marker) => marker}
+            />
+        );
+
+        const closeButton = wrapper.find({ variant: 'secondary' });
+        expect(closeButton.exists()).toBeTruthy();
+
+        closeButton.simulate('click');
+        expect(isVisible).toBeFalsy();
+
+        closeButton.simulate('click');
+        expect(isVisible).toBeTruthy();
+    });
+
+    it('close on click Submit', () => {
+        let isVisible = true;
+        const wrapper = shallow(
+            <GoodleModal
+                onHide={() => (isVisible = !isVisible)}
+                fillForm={(marker) => marker}
+            />
+        );
+
+        const submitButton = wrapper.find({ children: 'Submit' });
+        expect(submitButton.exists()).toBeTruthy();
+
+        submitButton.simulate('click');
+        expect(isVisible).toBeFalsy();
     });
 });

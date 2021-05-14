@@ -12,7 +12,6 @@ export default function CityInput({
     ...props
 }) {
     const [show, setShow] = useState(false);
-
     return (
         <div className="position-relative">
             <Form.Group controlId="city" className="position-relative">

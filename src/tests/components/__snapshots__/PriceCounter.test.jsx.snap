@@ -1,55 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
-<Fragment>
-  <ListGroupItem
-    active={false}
-    className="mb-3 px-0 bg-transparent"
-    disabled={false}
-  >
-    <styled.div>
-      <styled.p>
-        Subtotal
-      </styled.p>
-      <Styled(styled.p)>
-        $
-        398
-      </Styled(styled.p)>
-    </styled.div>
-    <styled.div>
-      <styled.p>
-        Shipping
-      </styled.p>
-      <Styled(styled.p)>
-        Free
-      </Styled(styled.p)>
-    </styled.div>
-    <styled.div>
-      <styled.p>
-        Taxes
-      </styled.p>
-      <Styled(styled.p)>
-        20
-      </Styled(styled.p)>
-    </styled.div>
-  </ListGroupItem>
-  <styled.div
-    className="d-flex justify-content-between p-0"
-  >
-    <Styled(styled.div)>
-      Total
-    </Styled(styled.div)>
-    <Styled(Styled(styled.div))
-      className="mb-4"
-    >
-      $
-      410.12
-    </Styled(Styled(styled.div))>
-  </styled.div>
-  <Conditions />
-</Fragment>
-`;
-
 exports[`renders snapshot 1`] = `
 <Fragment>
   <ListGroupItem
