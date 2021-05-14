@@ -5,12 +5,18 @@ import { BiTargetLock } from 'react-icons/bi';
 import { FindButton } from '../styled/CityInput';
 import GoogleModal from './GoodleModal';
 
+interface Props {
+    // Bootstrap doesnt support ref type
+    inputRef: any;
+    fillForm: Function;
+    value?: string;
+}
+
 export default function CityInput({
     inputRef,
     fillForm,
     value = '',
-    ...props
-}) {
+}: Props): JSX.Element {
     const [show, setShow] = useState(false);
     return (
         <div className="position-relative">
@@ -20,7 +26,6 @@ export default function CityInput({
                     placeholder="City"
                     ref={inputRef}
                     value={value}
-                    {...props}
                 />
             </Form.Group>
 

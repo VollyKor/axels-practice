@@ -35,6 +35,7 @@ describe('When testing reducers', () => {
     it('should handle setGeo', () => {
         expect(geoReducer(undefined, setGeo(geoData))).toEqual(geoData);
     });
+
     it('should handle removeGeo', () => {
         expect(geoReducer(undefined, removeGeo(geoData))).toEqual(initialState);
     });

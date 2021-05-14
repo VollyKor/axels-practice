@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import Modal from 'react-bootstrap/Modal';
@@ -40,7 +41,7 @@ const GoogleModal = ({ fillForm, ...props }) => {
         language: 'en',
     });
 
-    if (loadError) return 'Google Map Error';
+    if (loadError) return <p>Google Map Error</p>;
 
     return (
         <Modal

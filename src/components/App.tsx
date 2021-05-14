@@ -8,7 +8,7 @@ import PrintPage from './PrintPage';
 import GlobalStyles from '../styled/utils/globalStyles';
 import theme from '../styled/utils/themeStyles';
 
-const App = () => (
+const App = (): JSX.Element => (
     <ThemeProvider theme={theme}>
         <GlobalStyles />
 

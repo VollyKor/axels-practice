@@ -4,7 +4,7 @@ import { Col, Container } from 'react-bootstrap';
 import { OrderSummary, OrderForms } from 'components';
 import { MinHeightRow, HalfTransparentWrapper } from '../styled/utils/common';
 
-const Cart = () => (
+const Cart = (): JSX.Element => (
     <Container>
         <Col lg={9} className="mx-auto">
             <MinHeightRow className="mx-auto bg-white shadow rounded">
