@@ -5,7 +5,7 @@ import * as req from '../../helpers/requests';
 
 export const POST_ORDER = createAction('POST_ORDER');
 
-const sendOrder = createAction('order/post');
+export const sendOrder = createAction('order/post');
 
 export function* postOrder(orderData) {
     const response = yield req.postOrder(orderData);

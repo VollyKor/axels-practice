@@ -1,9 +1,9 @@
 import { createReducer, createAction } from '@reduxjs/toolkit';
 
 export const setGeo = createAction('geo/set');
-export const removeGeo = createAction('geo/emove');
+export const removeGeo = createAction('geo/remove');
 
-const initialState = {
+export const initialState = {
     lat: null,
     lng: null,
 };

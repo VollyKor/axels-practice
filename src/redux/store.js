@@ -6,12 +6,10 @@ import sagaWatcher from './saga';
 import { orderReducer } from './ducks/order';
 import { productsReducer } from './ducks/products';
 import { geoReducer } from './ducks/geo';
-import { addressReducer } from './ducks/address';
 
 const reducer = {
     products: productsReducer,
     order: orderReducer,
-    address: addressReducer,
     geo: geoReducer,
 };
 
