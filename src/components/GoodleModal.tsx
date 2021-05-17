@@ -6,6 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
 import { setGeo } from '../redux/ducks/geo';
+import { Libraries } from '@react-google-maps/api/dist/utils/make-load-script-url';
 
 const GoogleMapsStyles = {
     width: '100%',
@@ -20,15 +21,23 @@ const options = {
     zoomControl: true,
 };
 
-const libraries = ['places'];
+const libraries: Libraries = ['places'];
 
-const GoogleModal = ({ fillForm, ...props }) => {
+interface Props {
+    fillForm: TfillForm;
+    onHide: Function;
+    show: boolean;
+}
+
+const GoogleModal = ({ fillForm, ...props }: Props) => {
+    const googleKey = process.env.REACT_APP_GOOGLE_API_KEY || 'unvalidKey';
+
     const [marker, setMarker] = useState(() => ({
         lat: 0,
         lng: 0,
     }));
 
-    const geo = useSelector((state) => state.geo);
+    const geo = useSelector((state: RootState) => state.geo);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -36,7 +45,7 @@ const GoogleModal = ({ fillForm, ...props }) => {
     }, [dispatch, geo]);
 
     const { loadError } = useLoadScript({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+        googleMapsApiKey: googleKey,
         libraries,
         language: 'en',
     });
@@ -63,10 +72,12 @@ const GoogleModal = ({ fillForm, ...props }) => {
                     zoom={14}
                     options={options}
                     onClick={(event) => {
-                        setMarker({
-                            lat: event.latLng.lat(),
-                            lng: event.latLng.lng(),
-                        });
+                        if (event.latLng && event.latLng) {
+                            setMarker({
+                                lat: event.latLng.lat(),
+                                lng: event.latLng.lng(),
+                            });
+                        }
                     }}
                 >
                     <Marker position={geo && marker} />

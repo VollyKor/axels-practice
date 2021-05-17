@@ -6,16 +6,17 @@ import { FindButton } from '../styled/CityInput';
 import GoogleModal from './GoodleModal';
 
 interface Props {
-    // Bootstrap doesnt support ref type
-    inputRef: any;
-    fillForm: Function;
+    inputRef: Ref;
+    fillForm: TfillForm;
     value?: string;
+    className?: string;
 }
 
 export default function CityInput({
     inputRef,
     fillForm,
     value = '',
+    ...props
 }: Props): JSX.Element {
     const [show, setShow] = useState(false);
     return (
@@ -26,6 +27,7 @@ export default function CityInput({
                     placeholder="City"
                     ref={inputRef}
                     value={value}
+                    {...props}
                 />
             </Form.Group>
 

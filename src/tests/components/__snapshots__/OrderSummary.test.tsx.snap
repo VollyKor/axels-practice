@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderSummary test renders snapshot correctly with data 1`] = `
+<Fragment>
+  <Row
+    className="justify-content-between pt-3 px-3 mt-2 align-items-baseline"
+    noGutters={false}
+  >
+    <h2
+      className="h6"
+    >
+      OrderSummary
+    </h2>
+    <withRouter(LinkContainer)
+      to="/"
+    >
+      <NavLink
+        as={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "render": [Function],
+          }
+        }
+        className="text-muted"
+        disabled={false}
+      >
+        <small>
+          <u>
+            edit order
+          </u>
+        </small>
+      </NavLink>
+    </withRouter(LinkContainer)>
+  </Row>
+  <ListGroup
+    className="list-group-flush"
+  >
+    <PriceCounter
+      price={10}
+    />
+  </ListGroup>
+</Fragment>
+`;
