@@ -42,17 +42,18 @@ exports[`renders snapshot 1`] = `
       className="align-items-center"
     >
       <Col
-        lg={6}
+        lg={7}
       >
         <FormGroup>
-          <FormControl
+          <InputElement
+            mask="(999) 999-99-99"
             name="phone"
             onBlur={[Function]}
             onChange={[Function]}
-            placeholder="Daytime Phone"
-            type="phone"
             value=""
-          />
+          >
+            <Component />
+          </InputElement>
           <Tooltip
             errors={Object {}}
             fieldName="phone"

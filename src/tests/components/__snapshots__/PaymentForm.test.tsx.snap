@@ -64,15 +64,29 @@ exports[`renders snapshot 1`] = `
       >
         Card Number
       </FormLabel>
-      <FormControl
-        inputMode="numeric"
-        name="cardNumber"
-        onBlur={[Function]}
-        onChange={[Function]}
-        placeholder="XXXX XXXX XXXX XXXX"
-        type="tel"
-        value=""
-      />
+      <div
+        className="div"
+        style={
+          Object {
+            "position": "relative",
+          }
+        }
+      >
+        <InputElement
+          mask="9999 9999 9999 9999"
+          name="cardNumber"
+          onBlur={[Function]}
+          onChange={[Function]}
+          value=""
+        >
+          <Component />
+        </InputElement>
+        <styled.div>
+          <CreditCardIcon
+            value=""
+          />
+        </styled.div>
+      </div>
       <Tooltip
         errors={Object {}}
         fieldName="cardNumber"
