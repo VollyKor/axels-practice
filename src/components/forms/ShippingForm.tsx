@@ -11,7 +11,7 @@ import { initialShippingFormValues, fieldName } from 'helpers/constants';
 import getGeo from 'helpers/getGeo';
 import { shippingFormValidate } from 'helpers/validationSchemas';
 import countryList from 'react-select-country-list';
-import { localStorageKey } from 'Ts/enums';
+import { localStorageKey } from 'types/enums';
 
 export default function ShippingForm() {
     const fullNameRef = useRef(null);

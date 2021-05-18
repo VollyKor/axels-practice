@@ -34,9 +34,9 @@ interface IinitialPaymentFormValues {
 }
 
 interface InewOrder {
-    paymentData: any;
-    shippingData: any;
-    billingData: any;
+    paymentData: object | null;
+    shippingData: object | null;
+    billingData: object | null;
 }
 
 interface Iorder {

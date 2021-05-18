@@ -18,6 +18,7 @@ exports[`renders snapshot 1`] = `
         "whiteColor": "#fff",
       },
       "deviceSize": Object {
+        "conditionTextWidth": "screen and (min-width: 992px)",
         "extraLarge": "screen and (min-width: 1024px)",
         "extraSmall": "screen and(min-width: 320px)",
         "large": "screen and (min-width: 768px)",
@@ -26,6 +27,7 @@ exports[`renders snapshot 1`] = `
         "small": "screen and (min-width: 375px)",
       },
       "screenSize": Object {
+        "conditionTextSize": "992px",
         "l": "768px",
         "m": "425px",
         "s": "375px",

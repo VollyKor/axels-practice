@@ -3,18 +3,18 @@
 exports[`renders snapshot 1`] = `
 Array [
   <div
-    className="sc-crzoAE cSjEMZ p-4"
+    className="sc-fnVZcZ leCFHY p-4"
   >
     <a
       aria-current={null}
-      className="sc-dIsUp dezKnZ navlink mr-2"
+      className="sc-fFSPTT gxNVOF navlink mr-2"
       href="/cart/shipping"
       onClick={[Function]}
     >
       Shipping
     </a>
     <svg
-      className="sc-bqGGPW jjjnep mr-2"
+      className="sc-bkbkJK kvYczg mr-2"
       color="#808181"
       fill="currentColor"
       height="30px"
@@ -36,14 +36,14 @@ Array [
     </svg>
     <a
       aria-current={null}
-      className="sc-dIsUp dezKnZ navlink mr-2"
+      className="sc-fFSPTT gxNVOF navlink mr-2"
       href="/cart/billing"
       onClick={[Function]}
     >
       Billing
     </a>
     <svg
-      className="sc-bqGGPW jjjnep mr-2"
+      className="sc-bkbkJK kvYczg mr-2"
       color="#808181"
       fill="currentColor"
       height="30px"
@@ -65,7 +65,7 @@ Array [
     </svg>
     <a
       aria-current={null}
-      className="sc-dIsUp dezKnZ navlink mr-2"
+      className="sc-fFSPTT gxNVOF navlink mr-2"
       href="/cart/payment"
       onClick={[Function]}
     >

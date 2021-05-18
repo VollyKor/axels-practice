@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders snapshot 1`] = `
+<styled.div
+  className="wrapper"
+>
+  <Image
+    alt=""
+    className="p-1"
+    fluid={false}
+    height="50px"
+    rounded={true}
+    roundedCircle={false}
+    src=""
+    thumbnail={false}
+    width="50px"
+  />
+</styled.div>
+`;

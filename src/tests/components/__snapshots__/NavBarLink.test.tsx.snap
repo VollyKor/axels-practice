@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders snapshot 1`] = `
+<withRouter(LinkContainer)
+  exact={true}
+  to="/"
+>
+  <NavLink
+    as={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "render": [Function],
+      }
+    }
+    disabled={false}
+  >
+    <Component />
+  </NavLink>
+</withRouter(LinkContainer)>
+`;

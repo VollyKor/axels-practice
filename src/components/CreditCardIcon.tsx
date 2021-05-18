@@ -3,12 +3,11 @@ import masterCardSrc from 'images/mastercard-icon.png';
 import discoverCardSrc from 'images/discover-icon.png';
 
 import { Icon } from 'styled/CreditCardIcon';
-
 interface Props {
     value: string;
 }
 
-export default function CreditCardIcon({ value }: Props) {
+const CreditCardIcon = ({ value }: Props) => {
     if (value[0] === '4') return <Icon src={visaSrc} alt="visa icon" />;
 
     if (value[0] === '5')
@@ -18,4 +17,6 @@ export default function CreditCardIcon({ value }: Props) {
         return <Icon src={discoverCardSrc} alt="mastercard icon" />;
 
     return <Icon />;
-}
+};
+
+export default CreditCardIcon;

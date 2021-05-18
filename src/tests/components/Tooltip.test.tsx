@@ -1,8 +1,9 @@
 import { shallow } from 'enzyme';
 
-import ShippingForm from 'components/forms/ShippingForm';
+import Tooltip from 'components/Tooltip';
 
 it('renders snapshot', () => {
-    const wrapper = shallow(<ShippingForm />);
+    //@ts-ignore
+    const wrapper = shallow(<Tooltip />);
     expect(wrapper).toMatchSnapshot();
 });

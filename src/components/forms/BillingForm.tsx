@@ -10,7 +10,7 @@ import countryList from 'react-select-country-list';
 import { initialBillingFormValues, fieldName } from 'helpers/constants';
 import getGeo from 'helpers/getGeo';
 import { BillingFormValidate } from '../../helpers/validationSchemas';
-import { localStorageKey } from 'Ts/enums';
+import { localStorageKey } from 'types/enums';
 
 export default function BillingForm(): JSX.Element {
     const fullNameRef = useRef(null);

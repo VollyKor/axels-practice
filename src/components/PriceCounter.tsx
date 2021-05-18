@@ -1,13 +1,7 @@
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
 
-import {
-    Item,
-    Title,
-    Price,
-    Total,
-    TotalPrice,
-    Conditions,
-} from '../styled/PriceCounter';
+import Conditions from 'components/Conditions';
+import { Item, Title, Price, Total, TotalPrice } from '../styled/PriceCounter';
 
 interface Props {
     price: number;

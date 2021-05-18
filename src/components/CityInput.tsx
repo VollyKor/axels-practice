@@ -12,12 +12,12 @@ interface Props {
     className?: string;
 }
 
-export default function CityInput({
+const CityInput = ({
     inputRef,
     fillForm,
     value = '',
     ...props
-}: Props): JSX.Element {
+}: Props): JSX.Element => {
     const [show, setShow] = useState(false);
     return (
         <div className="position-relative">
@@ -42,4 +42,6 @@ export default function CityInput({
             />
         </div>
     );
-}
+};
+
+export default CityInput;

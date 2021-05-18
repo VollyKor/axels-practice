@@ -3,14 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, NavLink, ListGroup } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-import { PriceCounter } from 'components';
-import { ProductInfo, ProductPrice, ProductImg } from '../styled/OrderSummary';
+import { PriceCounter, ProductImg, ProductInfo } from 'components';
+import { ProductPrice } from '../styled/OrderSummary';
 
 import { GET_PRODUCTS } from '../redux/ducks/products';
 
-export default function OrderSummary() {
+const OrderSummary = () => {
     const [quantity] = useState(1);
     const dispatch = useDispatch();
+
     const products = useSelector((state: RootState) => state.products);
 
     useEffect(() => {
@@ -56,4 +57,6 @@ export default function OrderSummary() {
             </ListGroup>
         </>
     );
-}
+};
+
+export default OrderSummary;

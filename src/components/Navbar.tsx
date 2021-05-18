@@ -1,6 +1,7 @@
 import { Container, Row, Col } from 'react-bootstrap';
 
-import { NavLink, Navbar, NavLogo, NavText } from '../styled/NavBar';
+import { Navbar, NavLogo, NavText } from '../styled/NavBar';
+import { NavLink } from '../styled/NavBarLink';
 import { CartLink } from 'components';
 
 const NavBar = () => (

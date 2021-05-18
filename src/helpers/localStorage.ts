@@ -1,4 +1,4 @@
-import { localStorageKey } from 'Ts/enums';
+import { localStorageKey } from 'types/enums';
 
 export const getOrderDataFromLS = () => {
     const paymentDataJson = localStorage.getItem(localStorageKey.paymentForm);

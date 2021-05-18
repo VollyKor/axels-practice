@@ -3,14 +3,22 @@ import * as redux from 'react-redux';
 
 import { OrderSummary } from 'components';
 
-import productsData from '../utils/mockData';
+import { products } from '../utils/mockData';
+
+type JestSpy = jest.SpyInstance<
+    unknown,
+    [
+        selector: (state: unknown) => unknown,
+        equalityFn?: ((left: unknown, right: unknown) => boolean) | undefined
+    ]
+>;
 
 describe('OrderSummary test', () => {
-    let spyOnUseSelector;
+    let spyOnUseSelector: JestSpy;
     let spyOnUseDispatch;
     let mockDispatch;
 
-    let initialProducts = null;
+    const initialProducts: never[] = [];
 
     beforeEach(() => {
         spyOnUseSelector = jest.spyOn(redux, 'useSelector');
@@ -32,7 +40,7 @@ describe('OrderSummary test', () => {
     });
 
     it('renders snapshot correctly with data', async () => {
-        await spyOnUseSelector.mockReturnValue(productsData);
+        await spyOnUseSelector.mockReturnValue(products);
 
         const wrapper = shallow(<OrderSummary />);
         expect(wrapper).toMatchSnapshot();

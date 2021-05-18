@@ -2,7 +2,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
 import qs from 'query-string';
 
-export default function PrintPage() {
+const PrintPage = () => {
     const { search } = useLocation();
     const orderData = qs.parse(search);
 
@@ -34,4 +34,6 @@ export default function PrintPage() {
             </Row>
         </Container>
     );
-}
+};
+
+export default PrintPage;

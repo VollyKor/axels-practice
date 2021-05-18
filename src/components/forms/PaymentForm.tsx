@@ -11,7 +11,7 @@ import { CheckIcon } from '../../styled/PaymentForm';
 
 import { initialPaymentFormValues, fieldName } from 'helpers/constants';
 import { PaymentFormValidate } from '../../helpers/validationSchemas';
-import { localStorageKey } from 'Ts/enums';
+import { localStorageKey } from 'types/enums';
 import { IconWrapper } from 'styled/CreditCardIcon';
 import CreditCardIcon from 'components/CreditCardIcon';
 
