@@ -3,6 +3,7 @@ import masterCardSrc from 'images/mastercard-icon.png';
 import discoverCardSrc from 'images/discover-icon.png';
 
 import { Icon } from 'styled/CreditCardIcon';
+
 interface Props {
     value: string;
 }
