@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders coorectly 1`] = `
+<styled.p
+  className="ml-2 text-muted"
+>
+  All puraches are subject to our
+   
+  <styled.a
+    className="text-muted"
+    href="/"
+    target="_blanc"
+  >
+    Terms and Conditions
+  </styled.a>
+</styled.p>
+`;
