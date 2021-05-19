@@ -17,6 +17,7 @@
         "dotenv": "^9.0.0",
         "formik": "^2.2.6",
         "google-map-react": "^2.1.9",
+        "gsap": "^3.6.1",
         "jest-enzyme": "^7.1.2",
         "node-sass": "^5.0.0",
         "query-string": "^7.0.0",
