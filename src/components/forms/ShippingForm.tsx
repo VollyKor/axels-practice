@@ -8,10 +8,10 @@ import { CityInput, Tooltip } from 'components';
 import { FormPhoneDesc, SubmitButton } from 'styled/ShippingForm';
 
 import { initialShippingFormValues, fieldName } from 'helpers/constants';
+import { shippingFormSchema } from 'helpers/validationSchemas';
 import getGeo from 'helpers/getGeo';
-import { shippingFormValidate } from 'helpers/validationSchemas';
-import countryList from 'react-select-country-list';
 import { localStorageKey } from 'types/enums';
+import countryList from 'react-select-country-list';
 
 export default function ShippingForm() {
     const fullNameRef = useRef(null);
@@ -37,7 +37,7 @@ export default function ShippingForm() {
 
                 history.push('/cart/billing');
             },
-            validationSchema: shippingFormValidate,
+            validationSchema: shippingFormSchema,
         });
 
     const fillForm: TfillForm = async (geo) => {
@@ -45,7 +45,7 @@ export default function ShippingForm() {
         resetForm({ values: { ...values, ...address } });
     };
 
-    const getWarningStyleBg: TgetWarningStyleBgShippingForm = (field) =>
+    const getWarning: TgetWarningShippingForm = (field) =>
         errors[field] && touched[field] && 'bg-warning';
 
     return (
@@ -60,7 +60,7 @@ export default function ShippingForm() {
                         type="name"
                         placeholder="Full name"
                         {...getFieldProps(fieldName.fullName)}
-                        className={getWarningStyleBg(
+                        className={getWarning(
                             fieldName.fullName as ShippingFormKeys
                         )}
                     />
@@ -84,7 +84,7 @@ export default function ShippingForm() {
                                         type="phone"
                                         ref={phoneRef}
                                         placeholder="Daytime Phone"
-                                        className={getWarningStyleBg(
+                                        className={getWarning(
                                             fieldName.phone as ShippingFormKeys
                                         )}
                                         {...props}
@@ -116,7 +116,7 @@ export default function ShippingForm() {
                         type="text"
                         placeholder="Street Address"
                         {...getFieldProps(fieldName.address)}
-                        className={getWarningStyleBg(
+                        className={getWarning(
                             fieldName.address as ShippingFormKeys
                         )}
                     />
@@ -135,7 +135,7 @@ export default function ShippingForm() {
                         ref={GateCodeRef}
                         placeholder="Apt, Suit, Bldg, Gate Code. (optional)"
                         {...getFieldProps(fieldName.gateCode)}
-                        className={getWarningStyleBg(
+                        className={getWarning(
                             fieldName.gateCode as ShippingFormKeys
                         )}
                     />
@@ -151,9 +151,7 @@ export default function ShippingForm() {
                 <CityInput
                     inputRef={cityRef}
                     fillForm={fillForm}
-                    className={getWarningStyleBg(
-                        fieldName.city as ShippingFormKeys
-                    )}
+                    className={getWarning(fieldName.city as ShippingFormKeys)}
                     {...getFieldProps(fieldName.city)}
                 />
 
@@ -172,7 +170,7 @@ export default function ShippingForm() {
                                 type="text"
                                 ref={countryRef}
                                 placeholder="Country"
-                                className={getWarningStyleBg(
+                                className={getWarning(
                                     fieldName.country as ShippingFormKeys
                                 )}
                                 {...getFieldProps(fieldName.country)}
@@ -200,7 +198,7 @@ export default function ShippingForm() {
                                 type="text"
                                 ref={zipCodeRef}
                                 placeholder="ZIP"
-                                className={getWarningStyleBg(
+                                className={getWarning(
                                     fieldName.zip as ShippingFormKeys
                                 )}
                                 {...getFieldProps(fieldName.zip)}

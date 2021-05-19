@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import CartLink from 'components/CartLink';
 
 it('renders snapshot', () => {
-    const wrapper = shallow(<CartLink productsInCart={3} />);
+    const wrapper = shallow(<CartLink cartCount={3} />);
 
     expect(wrapper).toMatchSnapshot();
 });
@@ -16,9 +16,9 @@ it('render default props correctly', () => {
 });
 
 it('render props correctly', () => {
-    const productsInCart = 3;
+    const cartCount = 3;
 
-    const wrapper = shallow(<CartLink productsInCart={productsInCart} />);
+    const wrapper = shallow(<CartLink cartCount={cartCount} />);
 
     const element = wrapper.find('span').text();
     expect(element).toContain(`3`);

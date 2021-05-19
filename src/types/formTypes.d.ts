@@ -13,9 +13,9 @@ type BillingFormKeys = keyof IinitialBillingFormValues;
 type ShippingFormKeys = keyof IinitialShippingFormValues;
 type PaymentFormKeys = keyof IinitialPaymentFormValues;
 
-type TgetWarningStyleBgBillingForm = (field: BillingFormKeys) => any;
-type TgetWarningStyleBgShippingForm = (field: ShippingFormKeys) => any;
-type TgetWarningStyleBgPaymentForm = (field: PaymentFormKeys) => any;
+type TgetWarningBillingForm = (field: BillingFormKeys) => any;
+type TgetWarningShippingForm = (field: ShippingFormKeys) => any;
+type TgetWarningPaymentForm = (field: PaymentFormKeys) => any;
 
 type TfillForm = (geo: Igeo) => Promise<void>;
 

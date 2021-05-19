@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import qs from 'query-string';
@@ -9,7 +8,7 @@ import { POST_ORDER } from '../redux/ducks/order';
 
 const OrderData = () => {
     const { orderId, contactEmail, deliveryDate } = useSelector(
-        (state: RootState) => state.order
+        ({ order }: RootState) => order
     );
 
     const dispatch = useDispatch();
@@ -19,7 +18,7 @@ const OrderData = () => {
         dispatch(POST_ORDER(orderData));
     }, [dispatch]);
 
-    const string = qs.stringify({ orderId, contactEmail, deliveryDate });
+    const queryString = qs.stringify({ orderId, contactEmail, deliveryDate });
 
     return (
         <div className="p-4 mt-5">
@@ -41,7 +40,7 @@ const OrderData = () => {
             <small>
                 <u>
                     <Link
-                        to={`/print?${string}`}
+                        to={`/print?${queryString}`}
                         className="font-weight-bold"
                         target="blanc"
                     >

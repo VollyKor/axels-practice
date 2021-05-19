@@ -5,15 +5,13 @@ import { useFormik } from 'formik';
 import { BiLockAlt } from 'react-icons/bi';
 import InputMask from 'react-input-mask';
 
-import { Tooltip } from 'components';
-import { SubmitButton } from '../../styled/ShippingForm';
-import { CheckIcon } from '../../styled/PaymentForm';
+import { Tooltip, CreditCardIcon } from 'components';
+import { SubmitButton } from 'styled/ShippingForm';
+import { CheckIcon } from 'styled/PaymentForm';
 
 import { initialPaymentFormValues, fieldName } from 'helpers/constants';
-import { PaymentFormValidate } from '../../helpers/validationSchemas';
+import { paymentFormSchema } from 'helpers/validationSchemas';
 import { localStorageKey } from 'types/enums';
-import { IconWrapper } from 'styled/CreditCardIcon';
-import CreditCardIcon from 'components/CreditCardIcon';
 
 export default function PaymentForm(): JSX.Element {
     const history = useHistory();
@@ -34,10 +32,10 @@ export default function PaymentForm(): JSX.Element {
 
             history.push('/cart/success');
         },
-        validationSchema: PaymentFormValidate,
+        validationSchema: paymentFormSchema,
     });
 
-    const getWarningStyleBg: TgetWarningStyleBgPaymentForm = (field) =>
+    const getWarning: TgetWarningPaymentForm = (field) =>
         errors[field] && touched[field] && 'bg-warning';
 
     return (
@@ -61,7 +59,7 @@ export default function PaymentForm(): JSX.Element {
                         type="name"
                         placeholder="Name as it appears on your card"
                         {...getFieldProps(fieldName.cardholder)}
-                        className={getWarningStyleBg(
+                        className={getWarning(
                             fieldName.cardholder as PaymentFormKeys
                         )}
                     />
@@ -85,18 +83,16 @@ export default function PaymentForm(): JSX.Element {
                                 <Form.Control
                                     type="tel"
                                     ref={cardNumberRef}
-                                    // inputMode="numeric"
                                     placeholder="XXXX XXXX XXXX XXXX"
-                                    className={getWarningStyleBg(
+                                    className={getWarning(
                                         fieldName.cardNumber as PaymentFormKeys
                                     )}
                                     {...props}
                                 />
                             )}
                         </InputMask>
-                        <IconWrapper>
-                            <CreditCardIcon value={values.cardNumber} />
-                        </IconWrapper>
+
+                        <CreditCardIcon value={values.cardNumber} />
                     </div>
                     <Tooltip
                         fieldName={fieldName.cardNumber as PaymentFormKeys}
@@ -115,7 +111,7 @@ export default function PaymentForm(): JSX.Element {
                                 type="text"
                                 placeholder="MM / YY"
                                 {...getFieldProps(fieldName.expireDate)}
-                                className={getWarningStyleBg(
+                                className={getWarning(
                                     fieldName.expireDate as PaymentFormKeys
                                 )}
                             />
@@ -138,7 +134,7 @@ export default function PaymentForm(): JSX.Element {
                                 ref={securityCodeRef}
                                 type="text"
                                 {...getFieldProps(fieldName.securityCode)}
-                                className={getWarningStyleBg(
+                                className={getWarning(
                                     fieldName.securityCode as PaymentFormKeys
                                 )}
                             />

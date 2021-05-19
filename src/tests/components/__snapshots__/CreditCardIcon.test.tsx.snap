@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders snapshot 1`] = `
-<styled.img
-  alt="mastercard icon"
-  src="mastercard-icon.png"
-/>
+<styled.div>
+  <styled.img
+    alt="mastercard icon"
+    src="mastercard-icon.png"
+  />
+</styled.div>
 `;

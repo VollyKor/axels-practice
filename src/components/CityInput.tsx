@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
+import { useState } from 'react';
 import { BiTargetLock } from 'react-icons/bi';
 
 import { FindButton } from '../styled/CityInput';

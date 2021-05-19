@@ -37,7 +37,7 @@ const GoogleModal = ({ fillForm, ...props }: Props) => {
         lng: 0,
     }));
 
-    const geo = useSelector((state: RootState) => state.geo);
+    const geo = useSelector(({ geo }: RootState) => geo);
     const dispatch = useDispatch();
 
     useEffect(() => {

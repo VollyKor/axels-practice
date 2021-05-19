@@ -6,11 +6,11 @@ import { useFormik } from 'formik';
 import { Tooltip, CityInput } from 'components';
 import { SubmitButton } from '../../styled/ShippingForm';
 
-import countryList from 'react-select-country-list';
 import { initialBillingFormValues, fieldName } from 'helpers/constants';
-import getGeo from 'helpers/getGeo';
-import { BillingFormValidate } from '../../helpers/validationSchemas';
+import { billingFormSchema } from '../../helpers/validationSchemas';
 import { localStorageKey } from 'types/enums';
+import countryList from 'react-select-country-list';
+import getGeo from 'helpers/getGeo';
 
 export default function BillingForm(): JSX.Element {
     const fullNameRef = useRef(null);
@@ -19,7 +19,7 @@ export default function BillingForm(): JSX.Element {
     const cityRef = useRef(null);
     const GateCodeRef = useRef(null);
     const countryRef = useRef(null);
-    const zipCodeRef = useRef(null);
+    const zipRef = useRef(null);
 
     const history = useHistory();
 
@@ -37,7 +37,7 @@ export default function BillingForm(): JSX.Element {
 
                 history.push('/cart/payment');
             },
-            validationSchema: BillingFormValidate,
+            validationSchema: billingFormSchema,
         });
 
     const fillForm: TfillForm = async (geo) => {
@@ -45,7 +45,7 @@ export default function BillingForm(): JSX.Element {
         resetForm({ values: { ...values, ...address } });
     };
 
-    const getWarningStyleBg: TgetWarningStyleBgBillingForm = (field) =>
+    const getWarning: TgetWarningBillingForm = (field) =>
         errors[field] && touched[field] && 'bg-warning';
 
     const handleClick = () => {
@@ -77,7 +77,7 @@ export default function BillingForm(): JSX.Element {
                         type="name"
                         placeholder="Full name"
                         {...getFieldProps(fieldName.fullName)}
-                        className={getWarningStyleBg(
+                        className={getWarning(
                             fieldName.fullName as BillingFormKeys
                         )}
                     />
@@ -95,7 +95,7 @@ export default function BillingForm(): JSX.Element {
                         type="email"
                         ref={emailRef}
                         placeholder="Email Address"
-                        className={getWarningStyleBg(
+                        className={getWarning(
                             fieldName.email as BillingFormKeys
                         )}
                         {...getFieldProps(fieldName.email)}
@@ -117,7 +117,7 @@ export default function BillingForm(): JSX.Element {
                         type="text"
                         placeholder="Street Address"
                         {...getFieldProps(fieldName.address)}
-                        className={getWarningStyleBg(
+                        className={getWarning(
                             fieldName.address as BillingFormKeys
                         )}
                     />
@@ -136,7 +136,7 @@ export default function BillingForm(): JSX.Element {
                         ref={GateCodeRef}
                         placeholder="Apt, Suit, Bldg, Gate Code. (optional)"
                         {...getFieldProps(fieldName.gateCode)}
-                        className={getWarningStyleBg(
+                        className={getWarning(
                             fieldName.gateCode as BillingFormKeys
                         )}
                     />
@@ -152,9 +152,7 @@ export default function BillingForm(): JSX.Element {
                 <CityInput
                     fillForm={fillForm}
                     inputRef={cityRef}
-                    className={getWarningStyleBg(
-                        fieldName.city as BillingFormKeys
-                    )}
+                    className={getWarning(fieldName.city as BillingFormKeys)}
                     {...getFieldProps(fieldName.city)}
                 />
 
@@ -173,7 +171,7 @@ export default function BillingForm(): JSX.Element {
                                 type="text"
                                 ref={countryRef}
                                 placeholder="Country"
-                                className={getWarningStyleBg(
+                                className={getWarning(
                                     fieldName.country as BillingFormKeys
                                 )}
                                 {...getFieldProps(fieldName.country)}
@@ -198,8 +196,8 @@ export default function BillingForm(): JSX.Element {
                             <Form.Control
                                 type="text"
                                 placeholder="ZIP"
-                                ref={zipCodeRef}
-                                className={getWarningStyleBg(
+                                ref={zipRef}
+                                className={getWarning(
                                     fieldName.zip as BillingFormKeys
                                 )}
                                 {...getFieldProps(fieldName.zip)}
@@ -207,7 +205,7 @@ export default function BillingForm(): JSX.Element {
 
                             <Tooltip
                                 fieldName={fieldName.zip as BillingFormKeys}
-                                forwardRef={zipCodeRef}
+                                forwardRef={zipRef}
                                 touched={touched}
                                 errors={errors}
                             />
