@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders snapshot 1`] = `
+<Container
+  className="mb-5"
+  fluid={false}
+>
+  <Row
+    noGutters={false}
+  >
+    <Col
+      className="mx-auto"
+    >
+      <Styled(Nav)>
+        <Styled(NavBarLink)
+          to="/"
+        >
+          <styled.span
+            className="mr-1"
+          >
+            &lt;/&gt;
+          </styled.span>
+          <Styled(styled.span)
+            className="h5"
+          >
+            Front-end Developer Test Task
+          </Styled(styled.span)>
+        </Styled(NavBarLink)>
+        <Styled(NavBarLink)
+          to="/cart/shipping"
+        >
+          <CartLink />
+        </Styled(NavBarLink)>
+      </Styled(Nav)>
+    </Col>
+  </Row>
+</Container>
+`;

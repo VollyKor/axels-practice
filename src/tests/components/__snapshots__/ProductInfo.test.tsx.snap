@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders snapshot 1`] = `
+<styled.div
+  className="p-1"
+>
+  <styled.h2
+    className="h6"
+  >
+    unknown
+  </styled.h2>
+  <styled.p>
+    default
+  </styled.p>
+  <Styled(styled.p)>
+    Quantity 
+    1
+  </Styled(styled.p)>
+</styled.div>
+`;
