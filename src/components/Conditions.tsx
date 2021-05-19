@@ -1,7 +1,6 @@
 import { ConditionLink, ConditionText } from 'styled/Conditions';
 
-const Conditions = () => {
-    return (
+const Conditions = () => (
         <ConditionText className="ml-2 text-muted">
             All puraches are subject to our{' '}
             <ConditionLink href="/" target="_blanc" className="text-muted">
@@ -9,6 +8,5 @@ const Conditions = () => {
             </ConditionLink>
         </ConditionText>
     );
-};
 
 export default Conditions;
