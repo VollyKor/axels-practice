@@ -1,7 +1,4 @@
-import visaSrc from 'images/visa-icon.png';
-import masterCardSrc from 'images/mastercard-icon.png';
-import discoverCardSrc from 'images/discover-icon.png';
-
+import getCreditCardIcon from 'helpers/CreditCardData';
 import { Icon, IconWrapper } from 'styled/CreditCardIcon';
 
 interface Props {
@@ -9,17 +6,11 @@ interface Props {
 }
 
 const CreditCardIcon = ({ value }: Props) => {
+    const icon = getCreditCardIcon(value);
+
     return (
         <IconWrapper>
-            {value[0] === '4' && <Icon src={visaSrc} alt="visa icon" />}
-
-            {value[0] === '5' && (
-                <Icon src={masterCardSrc} alt="mastercard icon" />
-            )}
-
-            {value[0] === '6' && (
-                <Icon src={discoverCardSrc} alt="mastercard icon" />
-            )}
+            {icon && <Icon src={icon?.src} alt={`${icon?.name} icon`} />}
         </IconWrapper>
     );
 };
