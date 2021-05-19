@@ -1,18 +1,7 @@
 import styled from 'styled-components';
-import { IoCartOutline } from 'react-icons/io5';
-
-import { Wrapper } from './utils/common';
 
 export const CartName = styled.span``;
 export const CartQuantyty = styled.p``;
-
-export const Cart = () => (
-    <Wrapper>
-        <CartName className="mr-1">cart</CartName>
-        <IoCartOutline size="25px" />
-        <CartQuantyty>1</CartQuantyty>
-    </Wrapper>
-);
 
 export const CartWrapper = styled.div`
     position: relative;

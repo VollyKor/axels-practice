@@ -11,8 +11,8 @@ exports[`renders snapshot 1`] = `
     <Col
       className="mx-auto"
     >
-      <Styled(C_Navbar)>
-        <Styled(C_NavBarLink)
+      <Styled(Nav)>
+        <Styled(NavBarLink)
           to="/"
         >
           <styled.span
@@ -25,13 +25,13 @@ exports[`renders snapshot 1`] = `
           >
             Front-end Developer Test Task
           </Styled(styled.span)>
-        </Styled(C_NavBarLink)>
-        <Styled(C_NavBarLink)
+        </Styled(NavBarLink)>
+        <Styled(NavBarLink)
           to="/cart/shipping"
         >
           <CartLink />
-        </Styled(C_NavBarLink)>
-      </Styled(C_Navbar)>
+        </Styled(NavBarLink)>
+      </Styled(Nav)>
     </Col>
   </Row>
 </Container>

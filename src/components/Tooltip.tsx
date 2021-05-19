@@ -2,19 +2,12 @@ import { Overlay, Popover } from 'react-bootstrap';
 
 interface Props {
     fieldName: FieldNAmeTypes | '';
-
     forwardRef: React.MutableRefObject<any>;
-    // Formik Objects
-    touched: any;
-    errors: any;
+    touched: TformikTouched;
+    errors: TformikErrors;
 }
 
-export default function Tooltip({
-    fieldName = '',
-    forwardRef,
-    touched,
-    errors,
-}: Props) {
+const Tooltip = ({ fieldName = '', forwardRef, touched, errors }: Props) => {
     return fieldName && forwardRef && touched && errors ? (
         <Overlay
             target={forwardRef?.current}
@@ -31,4 +24,6 @@ export default function Tooltip({
     ) : (
         <div>'Error, Some props are missing from Tooltip'</div>
     );
-}
+};
+
+export default Tooltip;

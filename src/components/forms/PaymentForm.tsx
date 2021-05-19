@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Form, Col } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import { BiLockAlt } from 'react-icons/bi';
+import InputMask from 'react-input-mask';
 
 import { Tooltip } from 'components';
 import { SubmitButton } from '../../styled/ShippingForm';
@@ -10,7 +11,9 @@ import { CheckIcon } from '../../styled/PaymentForm';
 
 import { initialPaymentFormValues, fieldName } from 'helpers/constants';
 import { PaymentFormValidate } from '../../helpers/validationSchemas';
-import { localStorageKey } from 'Ts/enums';
+import { localStorageKey } from 'types/enums';
+import { IconWrapper } from 'styled/CreditCardIcon';
+import CreditCardIcon from 'components/CreditCardIcon';
 
 export default function PaymentForm(): JSX.Element {
     const history = useHistory();
@@ -20,7 +23,7 @@ export default function PaymentForm(): JSX.Element {
     const expireDateRef = useRef(null);
     const securityCodeRef = useRef(null);
 
-    const { handleSubmit, getFieldProps, touched, errors } = useFormik({
+    const { handleSubmit, getFieldProps, touched, errors, values } = useFormik({
         initialValues: initialPaymentFormValues,
 
         onSubmit: async (formData) => {
@@ -73,17 +76,28 @@ export default function PaymentForm(): JSX.Element {
 
                 <Form.Group>
                     <Form.Label>Card Number</Form.Label>
-                    <Form.Control
-                        ref={cardNumberRef}
-                        type="tel"
-                        inputMode="numeric"
-                        placeholder="XXXX XXXX XXXX XXXX"
-                        {...getFieldProps(fieldName.cardNumber)}
-                        className={getWarningStyleBg(
-                            fieldName.cardNumber as PaymentFormKeys
-                        )}
-                    />
-
+                    <div className="div" style={{ position: 'relative' }}>
+                        <InputMask
+                            mask="9999 9999 9999 9999"
+                            {...getFieldProps(fieldName.cardNumber)}
+                        >
+                            {(props: any) => (
+                                <Form.Control
+                                    type="tel"
+                                    ref={cardNumberRef}
+                                    // inputMode="numeric"
+                                    placeholder="XXXX XXXX XXXX XXXX"
+                                    className={getWarningStyleBg(
+                                        fieldName.cardNumber as PaymentFormKeys
+                                    )}
+                                    {...props}
+                                />
+                            )}
+                        </InputMask>
+                        <IconWrapper>
+                            <CreditCardIcon value={values.cardNumber} />
+                        </IconWrapper>
+                    </div>
                     <Tooltip
                         fieldName={fieldName.cardNumber as PaymentFormKeys}
                         forwardRef={cardNumberRef}

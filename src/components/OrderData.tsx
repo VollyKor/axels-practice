@@ -7,7 +7,7 @@ import qs from 'query-string';
 import { getOrderDataFromLS } from 'helpers/localStorage';
 import { POST_ORDER } from '../redux/ducks/order';
 
-export default function OrderData() {
+const OrderData = () => {
     const { orderId, contactEmail, deliveryDate } = useSelector(
         (state: RootState) => state.order
     );
@@ -51,4 +51,6 @@ export default function OrderData() {
             </small>
         </div>
     );
-}
+};
+
+export default OrderData;

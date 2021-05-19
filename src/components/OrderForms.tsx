@@ -12,7 +12,7 @@ import {
 
 import { setGeo } from '../redux/ducks/geo';
 
-export default function OrderForms() {
+const OrderForms = () => {
     const { pathname } = useLocation();
 
     const geo = useSelector((state: RootState) => state.geo);
@@ -49,4 +49,6 @@ export default function OrderForms() {
             </Route>
         </>
     );
-}
+};
+
+export default OrderForms;

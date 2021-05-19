@@ -5,6 +5,8 @@ export const screenSize = {
     l: '768px',
     xl: '1024px',
     xxl: '1440px',
+
+    conditionTextSize: '992px',
 };
 
 export const deviceSize = {
@@ -14,6 +16,7 @@ export const deviceSize = {
     large: `screen and (min-width: ${screenSize.l})`,
     extraLarge: `screen and (min-width: ${screenSize.xl})`,
     largest: `screen and (min-width: ${screenSize.xxl})`,
+    conditionTextWidth: `screen and (min-width: ${screenSize.conditionTextSize})`,
 };
 
 export const colors = {

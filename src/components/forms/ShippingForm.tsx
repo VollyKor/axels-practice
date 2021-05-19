@@ -2,6 +2,7 @@ import { useRef, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Form, Col } from 'react-bootstrap';
 import { useFormik } from 'formik';
+import InputMask from 'react-input-mask';
 
 import { CityInput, Tooltip } from 'components';
 import { FormPhoneDesc, SubmitButton } from 'styled/ShippingForm';
@@ -10,7 +11,7 @@ import { initialShippingFormValues, fieldName } from 'helpers/constants';
 import getGeo from 'helpers/getGeo';
 import { shippingFormValidate } from 'helpers/validationSchemas';
 import countryList from 'react-select-country-list';
-import { localStorageKey } from 'Ts/enums';
+import { localStorageKey } from 'types/enums';
 
 export default function ShippingForm() {
     const fullNameRef = useRef(null);
@@ -72,17 +73,24 @@ export default function ShippingForm() {
                 </Form.Group>
 
                 <Form.Row className="align-items-center">
-                    <Col lg={6}>
+                    <Col lg={7}>
                         <Form.Group>
-                            <Form.Control
-                                type="phone"
-                                ref={phoneRef}
-                                placeholder="Daytime Phone"
-                                className={getWarningStyleBg(
-                                    fieldName.phone as ShippingFormKeys
-                                )}
+                            <InputMask
+                                mask="(999) 999-99-99"
                                 {...getFieldProps(fieldName.phone)}
-                            />
+                            >
+                                {(props: any) => (
+                                    <Form.Control
+                                        type="phone"
+                                        ref={phoneRef}
+                                        placeholder="Daytime Phone"
+                                        className={getWarningStyleBg(
+                                            fieldName.phone as ShippingFormKeys
+                                        )}
+                                        {...props}
+                                    />
+                                )}
+                            </InputMask>
 
                             <Tooltip
                                 fieldName={fieldName.phone as ShippingFormKeys}

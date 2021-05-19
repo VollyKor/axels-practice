@@ -18,3 +18,13 @@ type TgetWarningStyleBgShippingForm = (field: ShippingFormKeys) => any;
 type TgetWarningStyleBgPaymentForm = (field: PaymentFormKeys) => any;
 
 type TfillForm = (geo: Igeo) => Promise<void>;
+
+type TformikTouched =
+    | FormikTouched<IinitialShippingFormValues>
+    | FormikTouched<IinitialBillingFormValues>
+    | FormikTouched<IinitialPaymentFormValues>;
+
+type TformikErrors =
+    | FormikErrors<IinitialShippingFormValues>
+    | FormikErrors<IinitialBillingFormValues>
+    | FormikErrors<IinitialPaymentFormValues>;

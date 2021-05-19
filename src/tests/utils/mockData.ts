@@ -34,9 +34,9 @@ export const order: Iorder = {
 };
 
 export const newOrder: InewOrder = {
-    paymentData: 'data',
-    shippingData: 'another data',
-    billingData: 'billing data',
+    paymentData: { paymentData: 'somedata' },
+    shippingData: { shippingData: 'somedata' },
+    billingData: { billingData: 'somedata' },
 };
 
 export const randomAction = () => ({ type: 'action', payload: undefined });
