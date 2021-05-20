@@ -4,9 +4,9 @@ import { Row, NavLink, ListGroup } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 import { PriceCounter, ProductImg, ProductInfo } from 'components';
-import { ProductPrice } from '../styled/OrderSummary';
+import { ProductPrice } from 'styled/OrderSummary';
 
-import { GET_PRODUCTS } from '../redux/ducks/products';
+import { GET_PRODUCTS } from 'redux/ducks/products';
 
 const OrderSummary = () => {
     const [quantity] = useState(1);

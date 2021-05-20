@@ -2,7 +2,7 @@ import Image from 'react-bootstrap/Image';
 
 import { Wrapper } from 'styled/utils/common';
 
-import Img from '../images/image-not-found.jpg';
+import Img from 'images/image-not-found.jpg';
 
 interface Props {
     img?: string;

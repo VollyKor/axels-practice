@@ -4,8 +4,8 @@ import { put } from 'redux-saga/effects';
 
 import * as req from '../../helpers/requests';
 
-export const POST_ORDER = createAction<InewOrder>('POST_ORDER');
-export const sendOrder = createAction<Iorder>('order/post');
+export const POST_ORDER = createAction<InewOrder>('order/post');
+export const SEND_ORDER = createAction<Iorder>('order/post');
 
 export type Params = { orderData: InewOrder; type: string };
 
@@ -14,7 +14,7 @@ export function* postOrder({ orderData }: Params) {
         orderData
     );
 
-    yield put(sendOrder(response.data.data));
+    yield put(SEND_ORDER(response.data.data));
 }
 
 export const initialState: Iorder = {
@@ -24,5 +24,5 @@ export const initialState: Iorder = {
 };
 
 export const orderReducer = createReducer(initialState, (builder) => {
-    builder.addCase(sendOrder, (_, { payload }) => payload);
+    builder.addCase(SEND_ORDER, (_, { payload }) => payload);
 });

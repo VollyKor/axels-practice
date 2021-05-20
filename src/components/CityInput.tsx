@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import { BiTargetLock } from 'react-icons/bi';
 
-import { FindButton } from '../styled/CityInput';
-import GoogleModal from './GoodleModal';
+import GoogleModal from 'components/GoodleModal';
+import { FindButton } from 'styled/CityInput';
 
 interface Props {
     inputRef: Ref;

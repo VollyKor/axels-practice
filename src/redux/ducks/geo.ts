@@ -1,7 +1,7 @@
 import { createReducer, createAction } from '@reduxjs/toolkit';
 
-export const setGeo = createAction<Igeo>('geo/set');
-export const removeGeo = createAction('geo/remove');
+export const SET_GEO = createAction<Igeo>('geo/set');
+export const REMOVE_GEO = createAction('geo/remove');
 
 export const initialState: Igeo = {
     lat: 50.45466,
@@ -10,6 +10,6 @@ export const initialState: Igeo = {
 
 export const geoReducer = createReducer(initialState, (builder) => {
     builder
-        .addCase(setGeo, (state, { payload }) => payload)
-        .addCase(removeGeo, () => initialState);
+        .addCase(SET_GEO, (state, { payload }) => payload)
+        .addCase(REMOVE_GEO, () => initialState);
 });

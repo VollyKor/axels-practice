@@ -1,4 +1,4 @@
-import { NavWrapper, Link, Icon } from '../styled/OrderNav';
+import { NavWrapper, Link, Icon } from 'styled/OrderNav';
 
 const OrderNav = () => (
     <NavWrapper className="p-4">

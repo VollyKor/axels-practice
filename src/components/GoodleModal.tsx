@@ -5,7 +5,7 @@ import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
-import { setGeo } from '../redux/ducks/geo';
+import { SET_GEO } from 'redux/ducks/geo';
 import { Libraries } from '@react-google-maps/api/dist/utils/make-load-script-url';
 
 const GoogleMapsStyles = {
@@ -87,7 +87,7 @@ const GoogleModal = ({ fillForm, ...props }: Props) => {
             <Modal.Footer>
                 <Button
                     onClick={() => {
-                        dispatch(setGeo(marker));
+                        dispatch(SET_GEO(marker));
                         props.onHide();
                         fillForm(marker);
                     }}

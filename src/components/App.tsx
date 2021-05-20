@@ -1,12 +1,11 @@
 import Container from 'react-bootstrap/Container';
-import { Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { Switch, Route } from 'react-router-dom';
 
-import { Cart, Navbar } from 'components';
-import PrintPage from './PrintPage';
+import { Cart, Navbar, PrintPage } from 'components';
 
-import GlobalStyles from '../styled/utils/globalStyles';
-import theme from '../styled/utils/themeStyles';
+import GlobalStyles from 'styled/utils/globalStyles';
+import theme from 'styled/utils/themeStyles';
 
 const App = (): JSX.Element => (
     <ThemeProvider theme={theme}>

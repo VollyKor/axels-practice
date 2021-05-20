@@ -4,7 +4,7 @@ import { put } from 'redux-saga/effects';
 import * as req from 'helpers/requests';
 import {
     postOrder,
-    sendOrder,
+    SEND_ORDER,
     POST_ORDER,
     orderReducer,
 } from 'redux/ducks/order';
@@ -20,7 +20,7 @@ const response = {
 
 describe('When testing actions', () => {
     it('should create an action to post order', () => {
-        const type = 'POST_ORDER';
+        const type = 'order/post';
 
         const expectedAction = {
             type,
@@ -38,7 +38,7 @@ describe('When testing actions', () => {
             payload: order,
         };
 
-        expect(sendOrder(order)).toEqual(expectedAction);
+        expect(SEND_ORDER(order)).toEqual(expectedAction);
     });
 });
 
@@ -51,7 +51,7 @@ describe('When testing postOrder', () => {
     });
 
     it('and then trigger an action', (result) => {
-        expect(result).toEqual(put(sendOrder(response.data.data)));
+        expect(result).toEqual(put(SEND_ORDER(response.data.data)));
     });
 });
 
@@ -61,6 +61,6 @@ describe('When testing reducers', () => {
     });
 
     it('should handle setProducts', () => {
-        expect(orderReducer(undefined, sendOrder(order))).toEqual(order);
+        expect(orderReducer(undefined, SEND_ORDER(order))).toEqual(order);
     });
 });
