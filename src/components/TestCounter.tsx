@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function TestCounter() {
+const TestCounter = () => {
     const [counter, setCounter] = useState(0);
 
     return (
@@ -16,4 +16,6 @@ export default function TestCounter() {
             <button onClick={() => setCounter(counter - 1)}>dec</button>
         </div>
     );
-}
+};
+
+export default TestCounter;
