@@ -5,15 +5,14 @@ import { useFormik } from 'formik';
 import { BiLockAlt } from 'react-icons/bi';
 import InputMask from 'react-input-mask';
 
-import { Tooltip } from 'components';
-import { SubmitButton } from '../../styled/ShippingForm';
-import { CheckIcon } from '../../styled/PaymentForm';
+import { Tooltip, CreditCardIcon } from 'components';
+import { SubmitButton } from 'styled/ShippingForm';
+import { CheckIcon } from 'styled/PaymentForm';
+import { IconWrapper } from 'styled/CreditCardIcon';
 
 import { initialPaymentFormValues, fieldName } from 'helpers/constants';
-import { PaymentFormValidate } from '../../helpers/validationSchemas';
+import { PaymentFormValidate } from 'helpers/validationSchemas';
 import { localStorageKey } from 'types/enums';
-import { IconWrapper } from 'styled/CreditCardIcon';
-import CreditCardIcon from 'components/CreditCardIcon';
 
 export default function PaymentForm(): JSX.Element {
     const history = useHistory();

@@ -1,6 +1,6 @@
 import { localStorageKey } from 'types/enums';
 
-export const getOrderDataFromLS = () => {
+const getOrderDataFromLS = () => {
     const paymentDataJson = localStorage.getItem(localStorageKey.paymentForm);
     const shippingDataJson = localStorage.getItem(localStorageKey.shippingForm);
     const billingDataJson = localStorage.getItem(localStorageKey.billingForm);
@@ -19,3 +19,5 @@ export const getOrderDataFromLS = () => {
         billingData,
     };
 };
+
+export default getOrderDataFromLS;

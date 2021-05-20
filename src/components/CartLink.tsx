@@ -1,4 +1,4 @@
-import { CartWrapper, CartText, CartNotification } from '../styled/CartLink';
+import { CartWrapper, CartText, CartNotification } from 'styled/CartLink';
 import { IoCartOutline } from 'react-icons/io5';
 
 interface Props {

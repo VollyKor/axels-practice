@@ -4,9 +4,8 @@ import { call, put } from 'redux-saga/effects';
 
 import * as req from '../../helpers/requests';
 
-export const GET_PRODUCTS = createAction('GET_PRODUCTS');
-
-export const setProducts = createAction<Iproduct[]>('products/set');
+export const GET_PRODUCTS = createAction('products/get');
+export const SET_PRODUCTS = createAction<Iproduct[]>('products/set');
 
 export function* getProducts() {
     const response: AxiosResponse<Iresponse<Iproduct[]>> = yield call(
@@ -14,11 +13,11 @@ export function* getProducts() {
     );
     const data = response.data.data;
 
-    yield put(setProducts(data));
+    yield put(SET_PRODUCTS(data));
 }
 
 const initialState: Iproduct[] = [];
 
 export const productsReducer = createReducer(initialState, (builder) => {
-    builder.addCase(setProducts, (_, { payload }) => payload);
+    builder.addCase(SET_PRODUCTS, (_, { payload }) => payload);
 });

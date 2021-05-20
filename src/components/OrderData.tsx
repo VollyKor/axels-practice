@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import qs from 'query-string';
 
-import { getOrderDataFromLS } from 'helpers/localStorage';
-import { POST_ORDER } from '../redux/ducks/order';
+import getOrderDataFromLS from 'helpers/localStorage';
+import { POST_ORDER } from 'redux/ducks/order';
 
 const OrderData = () => {
     const { orderId, contactEmail, deliveryDate } = useSelector(

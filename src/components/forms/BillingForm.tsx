@@ -4,12 +4,12 @@ import { Form, Col, Row, Button } from 'react-bootstrap';
 import { useFormik } from 'formik';
 
 import { Tooltip, CityInput } from 'components';
-import { SubmitButton } from '../../styled/ShippingForm';
+import { SubmitButton } from 'styled/ShippingForm';
 
 import countryList from 'react-select-country-list';
 import { initialBillingFormValues, fieldName } from 'helpers/constants';
-import getGeo from 'helpers/getGeo';
-import { BillingFormValidate } from '../../helpers/validationSchemas';
+import { BillingFormValidate } from 'helpers/validationSchemas';
+import { getGeo } from 'helpers';
 import { localStorageKey } from 'types/enums';
 
 export default function BillingForm(): JSX.Element {

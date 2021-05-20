@@ -10,7 +10,7 @@ import {
     OrderData,
 } from 'components';
 
-import { setGeo } from '../redux/ducks/geo';
+import { SET_GEO } from 'redux/ducks/geo';
 
 const OrderForms = () => {
     const { pathname } = useLocation();
@@ -22,7 +22,7 @@ const OrderForms = () => {
         if (geo.lat === null) {
             navigator.geolocation.getCurrentPosition(({ coords }) =>
                 dispatch(
-                    setGeo({
+                    SET_GEO({
                         lat: coords.latitude,
                         lng: coords.longitude,
                     })

@@ -4,7 +4,7 @@ import { call, put } from 'redux-saga/effects';
 import * as req from 'helpers/requests';
 import {
     getProducts,
-    setProducts,
+    SET_PRODUCTS,
     GET_PRODUCTS,
     productsReducer,
 } from 'redux/ducks/products';
@@ -19,7 +19,7 @@ const response = {
 
 describe('When testing actions', () => {
     it('should create an action to get products', () => {
-        const type = 'GET_PRODUCTS';
+        const type = 'products/get';
 
         const expectedAction = {
             type,
@@ -37,7 +37,7 @@ describe('When testing actions', () => {
             payload: products,
         };
 
-        expect(setProducts(products)).toEqual(expectedAction);
+        expect(SET_PRODUCTS(products)).toEqual(expectedAction);
     });
 });
 
@@ -53,7 +53,7 @@ describe('When testing sagas', () => {
     });
 
     it('and then trigger an action', (result) => {
-        expect(result).toEqual(put(setProducts(products)));
+        expect(result).toEqual(put(SET_PRODUCTS(products)));
     });
 });
 
@@ -63,7 +63,7 @@ describe('When testing reducers', () => {
     });
 
     it('should handle setProducts', () => {
-        expect(productsReducer(undefined, setProducts(products))).toEqual(
+        expect(productsReducer(undefined, SET_PRODUCTS(products))).toEqual(
             products
         );
     });
