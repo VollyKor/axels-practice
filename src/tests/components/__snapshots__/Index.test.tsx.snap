@@ -57,7 +57,10 @@ exports[`renders snapshot 1`] = `
         <Container
           className="p-3"
           fluid={false}
-        />
+        >
+          <AnimateItem />
+          <TestCounter />
+        </Container>
       </Route>
       <Route
         path="/cart"
